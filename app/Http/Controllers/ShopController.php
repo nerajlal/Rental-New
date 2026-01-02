@@ -60,4 +60,24 @@ class ShopController extends Controller
     {
         return view('admin-shop.orders-view');
     }
+
+    public function calendar()
+    {
+        return view('admin-shop.calendar');
+    }
+
+    public function returns()
+    {
+        return view('admin-shop.returns');
+    }
+
+    public function deposits()
+    {
+        return view('admin-shop.deposits');
+    }
+
+    public function maintenance()
+    {
+        return view('admin-shop.maintenance');
+    }
 }

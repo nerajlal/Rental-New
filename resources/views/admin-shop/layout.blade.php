@@ -233,7 +233,7 @@
                         <i class="fas fa-chart-line"></i> <span>Analytics</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('shop.marketing') }}" class="nav-link {{ request()->routeIs('shop.marketing') ? 'active' : '' }}">
                         <i class="fas fa-bullhorn"></i> <span>Marketing</span>
                     </a>
@@ -242,7 +242,7 @@
                     <a href="{{ route('shop.discounts') }}" class="nav-link {{ request()->routeIs('shop.discounts') ? 'active' : '' }}">
                         <i class="fas fa-tags"></i> <span>Discounts</span>
                     </a>
-                </li>
+                </li> --}}
                 
                 <!-- Rental Management -->
                 <li class="nav-item mt-3">
@@ -265,11 +265,11 @@
                         <i class="fas fa-shield-alt"></i> <span>Security Deposits</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('shop.maintenance') }}" class="nav-link {{ request()->routeIs('shop.maintenance') ? 'active' : '' }}">
                         <i class="fas fa-tools"></i> <span>Maintenance</span>
                     </a>
-                </li>
+                </li> --}}
                 
                 <!-- Sales Channels -->
                 <li class="nav-item mt-3">
