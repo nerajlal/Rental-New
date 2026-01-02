@@ -279,27 +279,27 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.sites') }}" class="nav-link {{ request()->routeIs('admin.sites') ? 'active' : '' }}">
                         <i class="fas fa-store"></i> <span>All Sites</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.tenants') }}" class="nav-link {{ request()->routeIs('admin.tenants') ? 'active' : '' }}">
                         <i class="fas fa-users"></i> <span>Tenants</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.billing') }}" class="nav-link {{ request()->routeIs('admin.billing') ? 'active' : '' }}">
                         <i class="fas fa-money-bill-wave"></i> <span>Billing & Plans</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.report') }}" class="nav-link {{ request()->routeIs('admin.report') ? 'active' : '' }}">
                         <i class="fas fa-chart-pie"></i> <span>Platform Report</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.support') }}" class="nav-link {{ request()->routeIs('admin.support') ? 'active' : '' }}">
                         <i class="fas fa-ticket-alt"></i> <span>Support Tickets</span>
                     </a>
                 </li>
