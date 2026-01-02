@@ -38,35 +38,35 @@
                                 <tr>
                                     <td class="border-0 ps-3" style="width: 60px;">
                                         <div style="width: 50px; height: 50px; background: #f1f2f3; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-image text-subdued"></i>
+                                            <i class="fas fa-gem text-subdued"></i>
                                         </div>
                                     </td>
                                     <td class="border-0">
-                                        <div class="fw-medium">Classic Leather Jacket</div>
-                                        <small class="text-subdued">SKU: CLJ-001</small>
+                                        <div class="fw-medium">Gold Plated Bridal Necklace Set</div>
+                                        <small class="text-subdued">Rental Period: 3 days</small>
                                     </td>
                                     <td class="border-0 text-end">
-                                        $120.00 × 1
+                                        $150.00 × 1
                                     </td>
                                     <td class="border-0 text-end pe-3">
-                                        <strong>$120.00</strong>
+                                        <strong>$150.00</strong>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="border-0 ps-3">
                                         <div style="width: 50px; height: 50px; background: #f1f2f3; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-image text-subdued"></i>
+                                            <i class="fas fa-gem text-subdued"></i>
                                         </div>
                                     </td>
                                     <td class="border-0">
-                                        <div class="fw-medium">Wireless Bluetooth Headphones</div>
-                                        <small class="text-subdued">SKU: WBH-002</small>
+                                        <div class="fw-medium">Diamond Studded Bangles (Set of 4)</div>
+                                        <small class="text-subdued">Rental Period: 2 days</small>
                                     </td>
                                     <td class="border-0 text-end">
-                                        $89.99 × 1
+                                        $95.00 × 1
                                     </td>
                                     <td class="border-0 text-end pe-3">
-                                        <strong>$89.99</strong>
+                                        <strong>$95.00</strong>
                                     </td>
                                 </tr>
                             </tbody>
@@ -83,25 +83,22 @@
                         <span class="badge bg-success bg-opacity-10 text-success rounded-pill">Paid</span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-subdued">Subtotal</span>
-                        <span>$209.99</span>
+                        <span class="text-subdued">Subtotal (2 items, 5 days total)</span>
+                        <span>$245.00</span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-subdued">Shipping</span>
-                        <span>$15.00</span>
-                    </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <span class="text-subdued">Tax</span>
-                        <span>$20.01</span>
+                        <span class="text-subdued">Security Deposit (Refundable)</span>
+                        <span>$500.00</span>
                     </div>
                     <div class="border-top pt-2 mt-2">
                         <div class="d-flex justify-content-between">
                             <strong>Total</strong>
-                            <strong>$245.00</strong>
+                            <strong>$745.00</strong>
                         </div>
                     </div>
                     <div class="mt-3 pt-3 border-top">
-                        <small class="text-subdued">Paid by customer via Credit Card</small>
+                        <small class="text-subdued">Paid by customer via Credit Card</small><br>
+                        <small class="text-subdued">Security deposit will be refunded after return</small>
                     </div>
                 </div>
             </div>

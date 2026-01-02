@@ -9,12 +9,70 @@
         <button class="p-btn-primary">Create discount</button>
     </div>
 
+    <!-- Discounts Table -->
     <div class="card border-0 shadow-sm" style="border-radius: 8px;">
-        <div class="card-body text-center py-5">
-            <i class="fas fa-tags fa-3x mb-3 text-subdued opacity-50"></i>
-            <h5 class="fw-bold mb-2">Manage discounts</h5>
-            <p class="text-subdued small mb-3">Create discount codes and automatic discounts.</p>
-            <button class="p-btn-primary">Create discount</button>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" style="font-size: 14px;">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="ps-4 py-3 fw-semibold text-subdued border-0">Code</th>
+                        <th class="fw-semibold text-subdued border-0">Type</th>
+                        <th class="fw-semibold text-subdued border-0">Value</th>
+                        <th class="fw-semibold text-subdued border-0">Used</th>
+                        <th class="fw-semibold text-subdued border-0">Status</th>
+                        <th class="fw-semibold text-subdued border-0">Valid Until</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="cursor: pointer;">
+                        <td class="ps-4">
+                            <div class="fw-medium text-dark">WEDDING20</div>
+                            <small class="text-subdued">Wedding season special</small>
+                        </td>
+                        <td class="text-subdued">Percentage</td>
+                        <td class="fw-medium">20% off</td>
+                        <td class="text-subdued">23 / 100</td>
+                        <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill">Active</span></td>
+                        <td class="text-subdued">Mar 31, 2026</td>
+                    </tr>
+                    <tr style="cursor: pointer;">
+                        <td class="ps-4">
+                            <div class="fw-medium text-dark">FIRSTRENT50</div>
+                            <small class="text-subdued">First-time customer discount</small>
+                        </td>
+                        <td class="text-subdued">Fixed Amount</td>
+                        <td class="fw-medium">$50 off</td>
+                        <td class="text-subdued">12 / Unlimited</td>
+                        <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill">Active</span></td>
+                        <td class="text-subdued">No expiry</td>
+                    </tr>
+                    <tr style="cursor: pointer;">
+                        <td class="ps-4">
+                            <div class="fw-medium text-dark">FESTIVE30</div>
+                            <small class="text-subdued">Festival collection launch</small>
+                        </td>
+                        <td class="text-subdued">Percentage</td>
+                        <td class="fw-medium">30% off</td>
+                        <td class="text-subdued">45 / 50</td>
+                        <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill">Active</span></td>
+                        <td class="text-subdued">Feb 15, 2026</td>
+                    </tr>
+                    <tr style="cursor: pointer;">
+                        <td class="ps-4">
+                            <div class="fw-medium text-dark">NEWYEAR25</div>
+                            <small class="text-subdued">New year promotion</small>
+                        </td>
+                        <td class="text-subdued">Percentage</td>
+                        <td class="fw-medium">25% off</td>
+                        <td class="text-subdued">89 / 100</td>
+                        <td><span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill">Expired</span></td>
+                        <td class="text-subdued">Jan 15, 2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="p-3 border-top">
+            <small class="text-subdued">Showing 4 discount codes</small>
         </div>
     </div>
 </div>

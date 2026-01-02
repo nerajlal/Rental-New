@@ -49,68 +49,68 @@
                         <td>
                             <div class="d-flex align-items-center gap-3">
                                 <div style="width: 40px; height: 40px; background: #f1f2f3; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-image text-subdued"></i>
+                                    <i class="fas fa-gem text-subdued"></i>
                                 </div>
                                 <div>
-                                    <div class="fw-medium text-dark">Classic Leather Jacket</div>
+                                    <div class="fw-medium text-dark">Gold Plated Bridal Necklace Set</div>
                                 </div>
                             </div>
                         </td>
                         <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill">Active</span></td>
-                        <td class="text-subdued">45 in stock</td>
-                        <td class="text-subdued">Outerwear</td>
-                        <td class="text-subdued">Fashion Co</td>
+                        <td class="text-subdued">3 in stock</td>
+                        <td class="text-subdued">Bridal Sets</td>
+                        <td class="text-subdued">Royal Jewels</td>
                     </tr>
                     <tr style="cursor: pointer;">
                         <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
                         <td>
                             <div class="d-flex align-items-center gap-3">
                                 <div style="width: 40px; height: 40px; background: #f1f2f3; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-image text-subdued"></i>
+                                    <i class="fas fa-gem text-subdued"></i>
                                 </div>
                                 <div>
-                                    <div class="fw-medium text-dark">Wireless Bluetooth Headphones</div>
+                                    <div class="fw-medium text-dark">Diamond Studded Bangles (Set of 4)</div>
                                 </div>
                             </div>
                         </td>
                         <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill">Active</span></td>
-                        <td class="text-subdued">120 in stock</td>
-                        <td class="text-subdued">Electronics</td>
-                        <td class="text-subdued">TechGear</td>
+                        <td class="text-subdued">5 sets in stock</td>
+                        <td class="text-subdued">Bangles</td>
+                        <td class="text-subdued">Elegance Collection</td>
                     </tr>
                     <tr style="cursor: pointer;">
                         <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
                         <td>
                             <div class="d-flex align-items-center gap-3">
                                 <div style="width: 40px; height: 40px; background: #f1f2f3; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-image text-subdued"></i>
+                                    <i class="fas fa-gem text-subdued"></i>
                                 </div>
                                 <div>
-                                    <div class="fw-medium text-dark">Organic Cotton T-Shirt</div>
+                                    <div class="fw-medium text-dark">Temple Jhumka Earrings</div>
                                 </div>
                             </div>
                         </td>
                         <td><span class="badge bg-warning bg-opacity-10 text-warning rounded-pill">Draft</span></td>
                         <td class="text-subdued">0 in stock</td>
-                        <td class="text-subdued">Apparel</td>
-                        <td class="text-subdued">EcoWear</td>
+                        <td class="text-subdued">Earrings</td>
+                        <td class="text-subdued">Traditional Ornaments</td>
                     </tr>
                     <tr style="cursor: pointer;">
                         <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
                         <td>
                             <div class="d-flex align-items-center gap-3">
                                 <div style="width: 40px; height: 40px; background: #f1f2f3; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-image text-subdued"></i>
+                                    <i class="fas fa-gem text-subdued"></i>
                                 </div>
                                 <div>
-                                    <div class="fw-medium text-dark">Smart Watch Pro</div>
+                                    <div class="fw-medium text-dark">Antique Maang Tikka</div>
                                 </div>
                             </div>
                         </td>
                         <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill">Active</span></td>
-                        <td class="text-subdued">67 in stock</td>
-                        <td class="text-subdued">Electronics</td>
-                        <td class="text-subdued">TechWave</td>
+                        <td class="text-subdued">2 in stock</td>
+                        <td class="text-subdued">Hair Accessories</td>
+                        <td class="text-subdued">Heritage Collection</td>
                     </tr>
                 </tbody>
             </table>
