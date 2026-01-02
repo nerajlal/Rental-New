@@ -244,6 +244,33 @@
                     </a>
                 </li>
                 
+                <!-- Rental Management -->
+                <li class="nav-item mt-3">
+                    <div class="px-3 mb-2">
+                        <small class="text-uppercase fw-bold" style="font-size: 11px; color: #6d7175; letter-spacing: 0.5px;">Rental Management</small>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.calendar') }}" class="nav-link {{ request()->routeIs('shop.calendar') ? 'active' : '' }}">
+                        <i class="fas fa-calendar-alt"></i> <span>Calendar</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.returns') }}" class="nav-link {{ request()->routeIs('shop.returns') ? 'active' : '' }}">
+                        <i class="fas fa-undo"></i> <span>Returns</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.deposits') }}" class="nav-link {{ request()->routeIs('shop.deposits') ? 'active' : '' }}">
+                        <i class="fas fa-shield-alt"></i> <span>Security Deposits</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.maintenance') }}" class="nav-link {{ request()->routeIs('shop.maintenance') ? 'active' : '' }}">
+                        <i class="fas fa-tools"></i> <span>Maintenance</span>
+                    </a>
+                </li>
+                
                 <!-- Sales Channels -->
                 <li class="nav-item mt-3">
                     <div class="px-3 mb-2">

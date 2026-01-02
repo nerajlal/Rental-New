@@ -46,6 +46,12 @@ Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
     Route::get('/discounts', [ShopController::class, 'discounts'])->name('discounts');
     Route::get('/online-store', [ShopController::class, 'onlineStore'])->name('online-store');
     
+    // Rental Management
+    Route::get('/calendar', [ShopController::class, 'calendar'])->name('calendar');
+    Route::get('/returns', [ShopController::class, 'returns'])->name('returns');
+    Route::get('/deposits', [ShopController::class, 'deposits'])->name('deposits');
+    Route::get('/maintenance', [ShopController::class, 'maintenance'])->name('maintenance');
+    
     // Inner pages
     Route::get('/products/create', [ShopController::class, 'productsCreate'])->name('products.create');
     Route::get('/orders/{id}', [ShopController::class, 'ordersView'])->name('orders.view');
