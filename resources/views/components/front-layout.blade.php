@@ -116,7 +116,7 @@
                         <form method="POST" action="{{ route('admin.register.submit') }}">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label small fw-bold text-secondary ps-1">FULL NAME</label>
+                                <label class="form-label small fw-bold text-secondary ps-1">SHOP NAME</label>
                                 <input type="text" name="name" class="form-control form-control-lg fs-6 bg-light border-0 p-3 shadow-sm" required>
                             </div>
                             <div class="mb-3">
