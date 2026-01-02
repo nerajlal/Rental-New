@@ -22,11 +22,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
-        
-        // Placeholder routes for dashboard links to prevent errors
-        Route::get('/analytics', function () { return 'Analytics'; })->name('analytics');
-        Route::get('/orders', function () { return 'Orders'; })->name('orders');
-        Route::get('/customers', function () { return 'Customers'; })->name('customers');
-        Route::get('/products', function () { return 'Products'; })->name('products');
+        Route::get('/sites', [AdminController::class, 'sites'])->name('sites');
+        Route::get('/tenants', [AdminController::class, 'tenants'])->name('tenants');
+        Route::get('/billing', [AdminController::class, 'billing'])->name('billing');
+        Route::get('/report', [AdminController::class, 'report'])->name('report');
+        Route::get('/support', [AdminController::class, 'support'])->name('support');
     });
 });

@@ -219,22 +219,55 @@
         .p-btn-primary:hover { background: #006e52; border-color: #006e52; color: white; }
 
         .text-subdued { color: #6d7175 !important; }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 991px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+            }
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 16px;
+            }
+            .top-bar {
+                left: 0;
+            }
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 990;
+            }
+            .mobile-overlay.show { display: block; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
         <!-- Store Name / Brand -->
-        <div class="sidebar-brand-area">
+        <div class="sidebar-brand-area justify-content-between">
             <a href="{{ route('admin.dashboard') }}" class="store-selector">
                 <div class="store-avatar">R</div>
                 <div class="d-flex flex-column" style="line-height: 1.2;">
                     <span style="font-weight: 600; font-size: 14px;">RentalJewel</span>
                     <span style="font-size: 12px; color: #9da3a9;">Admin</span>
                 </div>
-                <i class="fas fa-chevron-down ms-auto" style="font-size: 10px; opacity: 0.7;"></i>
+                <!-- <i class="fas fa-chevron-down ms-auto" style="font-size: 10px; opacity: 0.7;"></i> -->
             </a>
+            <button class="btn btn-link text-dark d-lg-none p-0 ms-2" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
 
         <!-- Navigation -->
@@ -296,12 +329,19 @@
 
     <!-- Top Bar -->
     <header class="top-bar">
-        <div class="search-wrapper">
+        <!-- Mobile Toggle -->
+        <button class="btn btn-link text-dark d-lg-none me-2" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="search-wrapper d-none d-md-flex">
             <i class="fas fa-search" style="color: #5c5f62;"></i>
             <input type="text" class="search-input" placeholder="Search">
         </div>
+        <!-- Mobile Logo (Optional) -->
+        <span class="d-md-none fw-bold text-dark">RentalJewel</span>
         
-        <div class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center gap-3 ms-auto">
             <button style="background: none; border: none; font-size: 16px; color: #5c5f62; padding: 4px;">
                 <i class="far fa-bell"></i>
             </button>
@@ -310,7 +350,7 @@
                 <div style="width: 30px; height: 30px; background: #e3e3e3; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px; color: #5c5f62;">
                     {{ substr(Auth::user()->name ?? 'A', 0, 1) }}
                 </div>
-                <span class="small fw-medium text-dark">{{ Auth::user()->name ?? 'Admin' }}</span>
+                <span class="small fw-medium text-dark d-none d-sm-block">{{ Auth::user()->name ?? 'Admin' }}</span>
             </div>
         </div>
     </header>
@@ -321,5 +361,22 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('sidebarToggle');
+            const close = document.getElementById('sidebarClose');
+            const overlay = document.getElementById('mobileOverlay');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('show');
+                overlay.classList.toggle('show');
+            }
+
+            if(toggle) toggle.addEventListener('click', toggleSidebar);
+            if(close) close.addEventListener('click', toggleSidebar);
+            if(overlay) overlay.addEventListener('click', toggleSidebar);
+        });
+    </script>
 </body>
 </html>
