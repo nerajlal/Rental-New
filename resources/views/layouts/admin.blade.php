@@ -10,8 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            /* Polaris Design Tokens */
-            --p-background: #f1f2f3;
+            /* Polaris Design Tokens - "Alpha" Light Theme */
+            --p-background: #f1f2f3; /* Page Background */
             --p-surface: #ffffff;
             --p-on-surface: #202223;
             --p-text: #202223;
@@ -19,10 +19,14 @@
             --p-primary: #008060;
             --p-primary-hover: #006e52;
             --p-primary-pressed: #004d3a;
-            --p-sidebar-bg: #1a1c1d; /* Legacy Dark Sidebar */
-            --p-sidebar-hover: #303030;
-            --p-sidebar-active: #303030; /* or slightly refined */
-            --p-border-subdued: #c9cccf;
+            
+            /* Unified White Sidebar */
+            --p-sidebar-bg: #ffffff; 
+            --p-sidebar-hover: #f6f6f7;
+            --p-sidebar-active-bg: rgba(0, 128, 96, 0.15); /* VISIBLE Alpha Green */
+            --p-sidebar-active-text: #008060;
+            
+            --p-border-subdued: #e1e3e5;
             --p-shadow-card: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
             --p-topbar-height: 56px;
             
@@ -42,9 +46,9 @@
         /* Generic Link Override */
         a { color: var(--p-primary); text-decoration: none; }
         a:hover { color: var(--p-primary-hover); }
-        .text-dark a { color: inherit !important; } /* Restore for specifically dark links */
+        .text-dark a { color: inherit !important; }
 
-        /* Form Controls (Inputs, Checkboxes) */
+        /* Form Controls */
         .form-control:focus {
             border-color: #008060;
             box-shadow: 0 0 0 0.2rem rgba(0, 128, 96, 0.25);
@@ -53,19 +57,29 @@
             background-color: #008060;
             border-color: #008060;
         }
+        
+        /* Dropdown Overrides (Fix Blue) */
+        .dropdown-item:active, .dropdown-item:focus, .dropdown-item:hover {
+            background-color: rgba(0, 128, 96, 0.1);
+            color: #008060;
+        }
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: #008060;
+            color: #ffffff;
+        }
 
-        /* Sidebar - Exact Shopify Dark Theme */
+        /* Sidebar - Unified Light Theme */
         .sidebar { 
             width: 240px; 
             position: fixed; 
             top: 0; 
             bottom: 0; 
             left: 0; 
-            background-color: #202123; /* Darker, slightly softer black */
+            background-color: var(--p-sidebar-bg); 
             z-index: 1000; 
             display: flex;
             flex-direction: column;
-            border-right: 1px solid #313336;
+            border-right: 1px solid var(--p-border-subdued);
         }
         
         .sidebar-brand-area {
@@ -73,8 +87,8 @@
             display: flex;
             align-items: center;
             padding: 0 1rem;
-            background-color: #1a1c1d; /* Slightly darker than sidebar */
-            border-bottom: 1px solid #313336;
+            background-color: transparent; /* Seamless with sidebar */
+            border-bottom: 1px solid var(--p-border-subdued);
             margin-bottom: 8px;
         }
         
@@ -82,60 +96,50 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: #e3e5e7;
+            color: #202223;
             text-decoration: none;
             width: 100%;
             padding: 4px 8px;
             border-radius: 4px;
             transition: 0.2s;
         }
-        .store-selector:hover { background: rgba(255,255,255,0.1); }
+        .store-selector:hover { background: rgba(0,0,0,0.03); }
         .store-avatar {
             width: 28px; height: 28px;
-            background: #47c1bf; /* Shopify Teal for initials */
-            color: white; /* Text color inside avatar */
+            background: #e3e3e3; /* Neutral gray avatar */
+            color: #5c5f62; 
             border-radius: 4px;
             display: flex; align-items: center; justify-content: center;
             font-weight: 600; font-size: 12px;
         }
 
-        .nav-group-label {
-            padding: 12px 16px 4px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: #6d7175; /* Subdued text for headers if used */
-            letter-spacing: 0.05em;
-        }
-
         .nav-link { 
-            color: #d2d5d8; /* Softer white */
+            color: #5c5f62; 
             font-weight: 500; 
-            padding: 6px 12px; 
-            margin: 2px 8px;
+            padding: 8px 12px; /* Slightly taller for modern look */
+            margin: 4px 12px;
             display: flex; 
             align-items: center; 
             gap: 12px; 
             transition: 0.1s;
-            border-radius: 4px;
+            border-radius: 8px; /* Softer, modern corners */
             font-size: 14px;
             border: none;
         }
         
         .nav-link:hover { 
-            background-color: #303030; 
-            color: #f1f2f3; 
+            background-color: var(--p-sidebar-hover); 
+            color: #202223; 
         }
         
         .nav-link.active { 
-            background-color: #303030; 
-            color: #ffffff; 
+            background-color: var(--p-sidebar-active-bg); 
+            color: var(--p-sidebar-active-text);
             font-weight: 600;
         }
         
-        /* Shopify active indicator is often subtle or just the bg, but green text on icon sometimes */
-        .nav-link.active i { color: #5c6ac4; /* actually Shopify uses Indigo in admin or Teal, let's stick to simple white/grey specific */ color: #47c1bf; } 
-        .nav-link i { width: 20px; text-align: center; opacity: 1; font-size: 14px; color: #a6abb2; }
+        .nav-link.active i { color: var(--p-sidebar-active-text); } 
+        .nav-link i { width: 20px; text-align: center; opacity: 1; font-size: 14px; color: #8c9196; }
 
 
         /* Top Bar - White strip with Search */
@@ -270,9 +274,23 @@
         </div>
         
         <div class="mt-auto p-2 border-top border-secondary border-opacity-10">
-            <a href="#" class="nav-link">
-                <i class="fas fa-cog"></i> <span>Platform Settings</span>
-            </a>
+            <div class="dropup">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-cog"></i> <span>Platform Settings</span>
+                </a>
+                <ul class="dropdown-menu shadow-lg border-0 mb-2" style="width: 220px;">
+                    <li><h6 class="dropdown-header">My Account</h6></li>
+                    <li><a class="dropdown-item small py-2" href="#"><i class="fas fa-user-circle me-2"></i>Profile</a></li>
+                    <li><a class="dropdown-item small py-2" href="#"><i class="fas fa-file-invoice-dollar me-2"></i>Billing</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form method="POST" action="{{ route('admin.logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item small py-2 text-danger"><i class="fas fa-sign-out-alt me-2"></i>Log out</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
     </aside>
 
