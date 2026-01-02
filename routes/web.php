@@ -37,4 +37,12 @@ use App\Http\Controllers\ShopController;
 
 Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [ShopController::class, 'index'])->name('dashboard');
+    Route::get('/orders', [ShopController::class, 'orders'])->name('orders');
+    Route::get('/products', [ShopController::class, 'products'])->name('products');
+    Route::get('/customers', [ShopController::class, 'customers'])->name('customers');
+    Route::get('/content', [ShopController::class, 'content'])->name('content');
+    Route::get('/analytics', [ShopController::class, 'analytics'])->name('analytics');
+    Route::get('/marketing', [ShopController::class, 'marketing'])->name('marketing');
+    Route::get('/discounts', [ShopController::class, 'discounts'])->name('discounts');
+    Route::get('/online-store', [ShopController::class, 'onlineStore'])->name('online-store');
 });

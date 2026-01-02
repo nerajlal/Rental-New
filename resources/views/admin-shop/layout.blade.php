@@ -208,10 +208,53 @@
                         <i class="fas fa-home"></i> <span>Home</span>
                     </a>
                 </li>
-                <!-- Placeholder Shop Links -->
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-box"></i> <span>Products</span></a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-users"></i> <span>Customers</span></a></li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.orders') }}" class="nav-link {{ request()->routeIs('shop.orders') ? 'active' : '' }}">
+                        <i class="fas fa-shopping-bag"></i> <span>Orders</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.products') }}" class="nav-link {{ request()->routeIs('shop.products*') ? 'active' : '' }}">
+                        <i class="fas fa-box"></i> <span>Products</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.customers') }}" class="nav-link {{ request()->routeIs('shop.customers') ? 'active' : '' }}">
+                        <i class="fas fa-users"></i> <span>Customers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.content') }}" class="nav-link {{ request()->routeIs('shop.content') ? 'active' : '' }}">
+                        <i class="fas fa-file-alt"></i> <span>Content</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.analytics') }}" class="nav-link {{ request()->routeIs('shop.analytics') ? 'active' : '' }}">
+                        <i class="fas fa-chart-line"></i> <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.marketing') }}" class="nav-link {{ request()->routeIs('shop.marketing') ? 'active' : '' }}">
+                        <i class="fas fa-bullhorn"></i> <span>Marketing</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.discounts') }}" class="nav-link {{ request()->routeIs('shop.discounts') ? 'active' : '' }}">
+                        <i class="fas fa-tags"></i> <span>Discounts</span>
+                    </a>
+                </li>
+                
+                <!-- Sales Channels -->
+                <li class="nav-item mt-3">
+                    <div class="px-3 mb-2">
+                        <small class="text-uppercase fw-bold" style="font-size: 11px; color: #6d7175; letter-spacing: 0.5px;">Sales channels</small>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('shop.online-store') }}" class="nav-link {{ request()->routeIs('shop.online-store') ? 'active' : '' }}">
+                        <i class="fas fa-store"></i> <span>Online Store</span>
+                    </a>
+                </li>
             </ul>
         </div>
         
