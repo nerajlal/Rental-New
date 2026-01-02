@@ -32,3 +32,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/support', [AdminController::class, 'support'])->name('support');
     });
 });
+
+use App\Http\Controllers\ShopController;
+
+Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [ShopController::class, 'index'])->name('dashboard');
+});

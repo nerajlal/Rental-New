@@ -21,6 +21,25 @@ class AdminAuthController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
+            $user = Auth::user();
+
+            // Status Checks
+            if ($user->status == 0) {
+                Auth::logout();
+                $request->session()->invalidate();
+                return back()->withErrors(['email' => 'Your site is under admin approval. Please wait for some time.'])->onlyInput('email');
+            }
+
+            if ($user->status == 2) {
+                Auth::logout();
+                $request->session()->invalidate();
+                return back()->withErrors(['email' => 'Your account is deactivated by the admin. Please contact the support.'])->onlyInput('email');
+            }
+
+            // Role Redirection
+            if ($user->type === 'Shop') {
+                return redirect()->route('shop.dashboard');
+            }
 
             return redirect()->intended(route('admin.dashboard'));
         }
