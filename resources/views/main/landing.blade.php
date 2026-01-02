@@ -14,8 +14,53 @@
                         Replace messy spreadsheets with a powerful, all-in-one platform designed for jewelry rental businesses. Bookings, inventory, and payments—simplified.
                     </p>
                     <div class="d-flex gap-3">
-                        <a href="{{ route('register') }}" class="btn btn-modern px-4 py-3">Get Started Free</a>
+                        <button class="btn btn-modern px-4 py-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login / Get Started</button>
                         <button class="btn btn-light rounded-pill px-4 py-3 fw-bold border">Watch Demo</button>
+                    </div>
+
+                    <!-- Login Modal -->
+                    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0 shadow-lg rounded-4">
+                                <div class="modal-body p-5">
+                                    <div class="text-center mb-4">
+                                        <div class="bg-dark text-white d-inline-flex align-items-center justify-content-center rounded fw-bold fs-4 mb-3" style="width: 48px; height: 48px;">N</div>
+                                        <h3 class="fw-bold">Welcome Back</h3>
+                                        <p class="text-muted small">Enter your credentials to access the admin panel.</p>
+                                    </div>
+
+                                    <form method="POST" action="{{ route('admin.login.submit') }}">
+                                        @csrf
+                                        
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger px-3 py-2 text-danger small mb-4">
+                                                <ul class="list-unstyled mb-0 list-disc ps-3">
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label fw-medium small text-secondary mb-1">Email</label>
+                                            <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus class="form-control shadow-sm p-3">
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="password" class="form-label fw-medium small text-secondary mb-1">Password</label>
+                                            <input type="password" id="password" name="password" required class="form-control shadow-sm p-3">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-sm mb-3">Login</button>
+                                        
+                                        <div class="text-center">
+                                            <a href="#" class="small text-muted text-decoration-none">Forgot password?</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="mt-5 d-flex align-items-center gap-4">
@@ -117,10 +162,18 @@
                 <div class="position-relative z-1 py-5">
                     <h2 class="display-4 serif-font mb-4">Ready to launch?</h2>
                     <p class="lead text-white-50 mb-5 max-w-2xl mx-auto">Join the new wave of jewelry entrepreneurs building their future with RentalJewel.</p>
-                    <a href="{{ route('register') }}" class="btn btn-light rounded-pill px-5 py-3 fw-bold text-dark h5 mb-0">Start 14-Day Free Trial</a>
+<button class="btn btn-light rounded-pill px-5 py-3 fw-bold text-dark h5 mb-0" data-bs-toggle="modal" data-bs-target="#loginModal">Start 14-Day Free Trial</button>
                     <p class="small text-white-50 mt-4">No credit card required</p>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if ($errors->any())
+                var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+            @endif
+        });
+    </script>
 </x-front-layout>

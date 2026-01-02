@@ -9,7 +9,7 @@ class AdminAuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('admin.auth.login');
+        return redirect()->route('home');
     }
 
     public function login(Request $request)

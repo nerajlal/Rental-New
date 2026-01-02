@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('main.landing');
+})->name('home');
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
