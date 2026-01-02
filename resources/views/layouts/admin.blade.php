@@ -279,6 +279,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.pending') }}" class="nav-link {{ request()->routeIs('admin.pending') ? 'active' : '' }}">
+                        <i class="fas fa-bell"></i> <span>New Requests</span>
+                        @php
+                            $pendingCount = \App\Models\User::where('status', 0)->count();
+                        @endphp
+                        @if($pendingCount > 0)
+                            <span class="badge bg-success ms-auto rounded-pill" style="font-size: 10px;">{{ $pendingCount }}</span>
+                        @endif
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.sites') }}" class="nav-link {{ request()->routeIs('admin.sites') ? 'active' : '' }}">
                         <i class="fas fa-store"></i> <span>All Sites</span>
                     </a>

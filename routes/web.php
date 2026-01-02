@@ -23,6 +23,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
         Route::get('/sites', [AdminController::class, 'sites'])->name('sites');
+        Route::get('/pending-sites', [AdminController::class, 'pending'])->name('pending');
+        Route::post('/approve-site/{id}', [AdminController::class, 'approve'])->name('approve');
+        Route::post('/reject-site/{id}', [AdminController::class, 'reject'])->name('reject');
         Route::get('/tenants', [AdminController::class, 'tenants'])->name('tenants');
         Route::get('/billing', [AdminController::class, 'billing'])->name('billing');
         Route::get('/report', [AdminController::class, 'report'])->name('report');
