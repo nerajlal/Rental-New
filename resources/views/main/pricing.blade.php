@@ -23,7 +23,7 @@
                                 <li class="text-muted">✗ Custom Domain</li>
                             </ul>
                             
-                            <a href="{{ route('register') }}" class="btn btn-outline-dark rounded-pill w-100 py-2">Get Started</a>
+                            <button class="btn btn-outline-dark rounded-pill w-100 py-2" data-bs-toggle="modal" data-bs-target="#authModal">Get Started</button>
                         </div>
                     </div>
                 </div>

@@ -33,9 +33,138 @@
 </head>
 <body>
 
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="{{ route('home') }}">
+                <div class="bg-dark text-white d-inline-flex align-items-center justify-content-center rounded" style="width: 32px; height: 32px;">N</div>
+                RentalJewel
+                <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill small ms-2 px-2" style="font-size: 0.7rem; vertical-align: middle;">BETA</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium">
+                    <li class="nav-item px-2"><a class="nav-link text-dark" href="{{ route('how-it-works') }}">How it works</a></li>
+                    <li class="nav-item px-2"><a class="nav-link text-dark" href="{{ route('pricing') }}">Pricing</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-dark rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#authModal">Start freely</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <main>
         {{ $slot }}
     </main>
+
+    <!-- Global Auth Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header border-0 p-0 position-relative">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- Tabs -->
+                    <div class="w-100 d-flex text-center bg-light">
+                        <button class="btn flex-fill py-3 fw-bold rounded-0 border-0 bg-white text-dark active-tab-btn" id="loginTabBtn" onclick="switchTab('login')">Login</button>
+                        <button class="btn flex-fill py-3 fw-bold rounded-0 border-0 bg-light text-muted" id="registerTabBtn" onclick="switchTab('register')">Register</button>
+                    </div>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    
+                    <!-- Login Form -->
+                    <div id="loginFormSection">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold mb-1">Welcome Back</h3>
+                            <p class="text-muted small">Access your dashboard to manage rentals.</p>
+                        </div>
+                        <form method="POST" action="{{ route('admin.login.submit') }}">
+                            @csrf
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-secondary">EMAIL ADDRESS</label>
+                                <input type="email" name="email" class="form-control form-control-lg fs-6 bg-light border-0" required autofocus>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label small fw-bold text-secondary">PASSWORD</label>
+                                <input type="password" name="password" class="form-control form-control-lg fs-6 bg-light border-0" required>
+                                <div class="text-end mt-2">
+                                    <a href="#" class="small text-muted text-decoration-none">Forgot password?</a>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-sm">Log In</button>
+                        </form>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div id="registerFormSection" style="display: none;">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold mb-1">Create Account</h3>
+                            <p class="text-muted small">Start your 14-day free trial. No card required.</p>
+                        </div>
+                        <form method="POST" action="{{ route('admin.register.submit') }}">
+                            @csrf
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-secondary">FULL NAME</label>
+                                <input type="text" name="name" class="form-control form-control-lg fs-6 bg-light border-0" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-secondary">EMAIL ADDRESS</label>
+                                <input type="email" name="email" class="form-control form-control-lg fs-6 bg-light border-0" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label small fw-bold text-secondary">PASSWORD</label>
+                                <input type="password" name="password" class="form-control form-control-lg fs-6 bg-light border-0" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label small fw-bold text-secondary">CONFIRM PASSWORD</label>
+                                <input type="password" name="password_confirmation" class="form-control form-control-lg fs-6 bg-light border-0" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 py-3 fw-bold rounded-pill shadow-sm">Create Shop</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            const loginSection = document.getElementById('loginFormSection');
+            const registerSection = document.getElementById('registerFormSection');
+            const loginBtn = document.getElementById('loginTabBtn');
+            const registerBtn = document.getElementById('registerTabBtn');
+
+            if (tab === 'login') {
+                loginSection.style.display = 'block';
+                registerSection.style.display = 'none';
+                loginBtn.classList.replace('bg-light', 'bg-white');
+                loginBtn.classList.replace('text-muted', 'text-dark');
+                registerBtn.classList.replace('bg-white', 'bg-light');
+                registerBtn.classList.replace('text-dark', 'text-muted');
+            } else {
+                loginSection.style.display = 'none';
+                registerSection.style.display = 'block';
+                registerBtn.classList.replace('bg-light', 'bg-white');
+                registerBtn.classList.replace('text-muted', 'text-dark');
+                loginBtn.classList.replace('bg-white', 'bg-light');
+                loginBtn.classList.replace('text-dark', 'text-muted');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            @if ($errors->any())
+                var authModal = new bootstrap.Modal(document.getElementById('authModal'));
+                authModal.show();
+                
+                // Simple logic: if 'name' input has old value or error, likely registration
+                @if(old('name') || $errors->has('name') || $errors->has('password_confirmation'))
+                    switchTab('register');
+                @endif
+            @endif
+        });
+    </script>
 
     <footer class="bg-light py-5 mt-5 border-top">
         <div class="container text-center text-muted">

@@ -123,7 +123,7 @@
             </div>
 
              <div class="text-center mt-5 pt-5">
-                <a href="{{ route('register') }}" class="btn btn-modern px-5 py-3 shadow-lg">Start your Journey</a>
+                <button class="btn btn-modern px-5 py-3 shadow-lg" data-bs-toggle="modal" data-bs-target="#authModal">Start your Journey</button>
                 <p class="mt-3 text-muted small">Join 500+ rental businesses growing with us.</p>
             </div>
         </div>

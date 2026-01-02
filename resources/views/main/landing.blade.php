@@ -14,7 +14,7 @@
                         Replace messy spreadsheets with a powerful, all-in-one platform designed for jewelry rental businesses. Bookings, inventory, and payments—simplified.
                     </p>
                     <div class="d-flex gap-3">
-                        <button class="btn btn-modern px-4 py-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login / Get Started</button>
+                        <button class="btn btn-modern px-4 py-3" data-bs-toggle="modal" data-bs-target="#authModal">Login / Get Started</button>
                         <button class="btn btn-light rounded-pill px-4 py-3 fw-bold border">Watch Demo</button>
                     </div>
 
@@ -168,12 +168,4 @@
             </div>
         </div>
     </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            @if ($errors->any())
-                var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-                loginModal.show();
-            @endif
-        });
-    </script>
 </x-front-layout>
