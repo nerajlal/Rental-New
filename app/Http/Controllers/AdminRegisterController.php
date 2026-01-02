@@ -23,8 +23,12 @@ class AdminRegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Auth::login($user); // Optional: Login immediately or force login via form? 
+        // User asked to "stay in that landing page" and "popup". 
+        // Sticking to auto-login is usually better UX, but let's redirect to home.
+        
         Auth::login($user);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('home')->with('register_success', 'Your account has been created successfully!');
     }
 }
