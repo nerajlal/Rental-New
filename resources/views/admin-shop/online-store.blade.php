@@ -18,7 +18,7 @@
                     <h6 class="fw-bold mb-1">Jewelry Luxe</h6>
                     <small class="text-subdued">Version 2.1 • Premium jewelry rental theme</small>
                 </div>
-                <button class="p-btn ms-auto">Customize</button>
+                <a href="#" class="p-btn ms-auto">Customize</a>
             </div>
             <div class="row g-2">
                 <div class="col-md-4">
@@ -48,7 +48,7 @@
                     <div class="mb-2"><small class="text-subdued">• How to Choose Bridal Jewelry</small></div>
                     <div class="mb-2"><small class="text-subdued">• Caring for Rented Ornaments</small></div>
                     <div class="mb-3"><small class="text-subdued">• Traditional vs Modern Designs</small></div>
-                    <button class="p-btn btn-sm">Manage blog</button>
+                    <a href="#" class="p-btn btn-sm">Manage blog</a>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                     <div class="mb-2"><small class="text-subdued">• Rental Policy</small></div>
                     <div class="mb-2"><small class="text-subdued">• Care Instructions</small></div>
                     <div class="mb-3"><small class="text-subdued">• Contact & Booking</small></div>
-                    <button class="p-btn btn-sm">Manage pages</button>
+                    <a href="#" class="p-btn btn-sm">Manage pages</a>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                     <p class="text-subdued small mb-3">2 menus configured</p>
                     <div class="mb-2"><small class="text-subdued">• Main Menu (7 items)</small></div>
                     <div class="mb-3"><small class="text-subdued">• Footer (4 items)</small></div>
-                    <button class="p-btn btn-sm">Edit menus</button>
+                    <a href="#" class="p-btn btn-sm">Edit menus</a>
                 </div>
             </div>
         </div>

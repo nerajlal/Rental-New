@@ -6,7 +6,7 @@
 <div class="container-fluid p-0">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h4 fw-bold mb-0 text-dark">Marketing</h1>
-        <button class="p-btn-primary">Create campaign</button>
+        <a href="#" class="p-btn-primary">Create campaign</a>
     </div>
 
     <!-- Active Campaigns -->
@@ -108,7 +108,7 @@
                     <i class="fas fa-envelope fa-2x mb-3" style="color: var(--p-primary);"></i>
                     <h6 class="fw-bold mb-2">Email Marketing</h6>
                     <p class="text-subdued small mb-3">Send targeted emails to your customer list</p>
-                    <button class="p-btn btn-sm">Create email</button>
+                    <a href="#" class="p-btn btn-sm">Create email</a>
                 </div>
             </div>
         </div>
@@ -118,7 +118,7 @@
                     <i class="fas fa-mobile-alt fa-2x mb-3" style="color: var(--p-primary);"></i>
                     <h6 class="fw-bold mb-2">SMS Marketing</h6>
                     <p class="text-subdued small mb-3">Reach customers directly on their phones</p>
-                    <button class="p-btn btn-sm">Create SMS</button>
+                    <a href="#" class="p-btn btn-sm">Create SMS</a>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
                     <i class="fab fa-facebook fa-2x mb-3" style="color: var(--p-primary);"></i>
                     <h6 class="fw-bold mb-2">Social Ads</h6>
                     <p class="text-subdued small mb-3">Run ads on Facebook and Instagram</p>
-                    <button class="p-btn btn-sm">Create ad</button>
+                    <a href="#" class="p-btn btn-sm">Create ad</a>
                 </div>
             </div>
         </div>

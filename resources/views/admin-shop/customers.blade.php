@@ -6,7 +6,7 @@
 <div class="container-fluid p-0">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h4 fw-bold mb-0 text-dark">Customers</h1>
-        <button class="p-btn-primary">Add customer</button>
+        <a href="#" class="p-btn-primary">Add customer</a>
     </div>
 
     <!-- Filters -->
