@@ -44,7 +44,7 @@
                                 <li class="mb-3">✓ Priority Support</li>
                             </ul>
                             
-                            <a href="{{ route('register') }}" class="btn btn-warning text-dark fw-bold rounded-pill w-100 py-2">Start Free Trial</a>
+                            <button class="btn btn-warning text-dark fw-bold rounded-pill w-100 py-2" data-bs-toggle="modal" data-bs-target="#authModal">Start Free Trial</button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                                 <li class="mb-3">✓ Dedicated Account Manager</li>
                             </ul>
                             
-                            <a href="{{ route('register') }}" class="btn btn-outline-dark rounded-pill w-100 py-2">Contact Sales</a>
+                            <button class="btn btn-outline-dark rounded-pill w-100 py-2">Contact Sales</button>
                         </div>
                     </div>
                 </div>
