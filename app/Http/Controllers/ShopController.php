@@ -50,4 +50,14 @@ class ShopController extends Controller
     {
         return view('admin-shop.online-store');
     }
+
+    public function productsCreate()
+    {
+        return view('admin-shop.products-create');
+    }
+
+    public function ordersView($id)
+    {
+        return view('admin-shop.orders-view');
+    }
 }

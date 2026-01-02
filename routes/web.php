@@ -45,4 +45,8 @@ Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
     Route::get('/marketing', [ShopController::class, 'marketing'])->name('marketing');
     Route::get('/discounts', [ShopController::class, 'discounts'])->name('discounts');
     Route::get('/online-store', [ShopController::class, 'onlineStore'])->name('online-store');
+    
+    // Inner pages
+    Route::get('/products/create', [ShopController::class, 'productsCreate'])->name('products.create');
+    Route::get('/orders/{id}', [ShopController::class, 'ordersView'])->name('orders.view');
 });
