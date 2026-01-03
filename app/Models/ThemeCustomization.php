@@ -79,7 +79,6 @@ class ThemeCustomization extends Model
                 'facebook_url' => '#',
                 'instagram_url' => '#',
                 'pinterest_url' => '#',
-                'copyright_text' => '© 2026 All rights reserved',
                 'show_social' => true,
             ],
         ];

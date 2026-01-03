@@ -204,11 +204,6 @@
                     "label": "Pinterest URL",
                     "default": "#"
                 },
-                "copyright_text": {
-                    "type": "text",
-                    "label": "Copyright Text",
-                    "default": "© 2026 All rights reserved"
-                },
                 "show_social": {
                     "type": "checkbox",
                     "label": "Show Social Media Links",

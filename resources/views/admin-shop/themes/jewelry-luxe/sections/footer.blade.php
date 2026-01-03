@@ -52,7 +52,12 @@
         </div>
         <hr class="my-4" style="border-color: #e1e3e5;">
         <div class="text-center">
-            <p class="text-muted small mb-0" data-setting-key="copyright_text">{{ $copyrightText }}</p>
+            <p class="text-muted small mb-2">&copy; {{ date('Y') }} All rights reserved</p>
+            <p class="small mb-0">
+                <a href="https://metora.in/saas" target="_blank" class="text-decoration-none text-muted" style="font-size: 11px; opacity: 0.7;">
+                    <i class="fas fa-code me-1"></i>Developed and maintained by <strong>Metora</strong>
+                </a>
+            </p>
         </div>
     </div>
 </footer>
