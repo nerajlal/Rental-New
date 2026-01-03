@@ -190,6 +190,9 @@
 
 <script>
 let customizationData = @json($customization->sections ?? []);
+if (Array.isArray(customizationData) && customizationData.length === 0) {
+    customizationData = {};
+}
 
 function showSettings(sectionType) {
     // Hide all panels
