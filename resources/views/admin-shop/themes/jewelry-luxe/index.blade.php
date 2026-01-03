@@ -92,6 +92,12 @@
                             targetEl.src = value;
                         } else if (targetEl.tagName === 'A' && key.includes('url')) {
                             targetEl.href = value;
+                        } else if (key.includes('stars')) {
+                            let starsHtml = '';
+                            for(let i=0; i<parseInt(value); i++) {
+                                starsHtml += '<i class="fas fa-star" style="color: #fbbf24; font-size: 14px;"></i>';
+                            }
+                            targetEl.innerHTML = starsHtml;
                         } else if (key.includes('color')) {
                              // Handle background color or text color
                             if (key === 'background_color') {
