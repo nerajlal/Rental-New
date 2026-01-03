@@ -93,7 +93,7 @@
                     <label class="form-label fw-medium small">Custom Domain</label>
                     <div class="p-3 bg-light rounded" style="border: 1px solid #e1e3e5;">
                         <p class="mb-2 small"><i class="fas fa-info-circle me-1" style="color: var(--p-primary);"></i> For custom domain setup (e.g., <strong>yourdomain.com</strong>), please contact our support team.</p>
-                        <a href="#" class="p-btn btn-sm">
+                        <a href="https://wa.me/918547470675?text=Hi,%20I%20need%20help%20with%20custom%20domain%20setup" target="_blank" class="p-btn btn-sm">
                             <i class="fas fa-headset me-1"></i> Contact Support
                         </a>
                     </div>
