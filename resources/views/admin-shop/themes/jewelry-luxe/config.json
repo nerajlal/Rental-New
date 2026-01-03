@@ -27,30 +27,85 @@
             "name": "Hero Banner",
             "icon": "fa-image",
             "settings": {
-                "heading": {
+                "autoplay_speed": {
                     "type": "text",
-                    "label": "Main Heading",
+                    "label": "Autoplay Speed (ms)",
+                    "default": "5000"
+                },
+                "slide1_image": {
+                    "type": "text",
+                    "label": "Slide 1 Image URL",
+                    "default": ""
+                },
+                "slide1_heading": {
+                    "type": "text",
+                    "label": "Slide 1 Heading",
                     "default": "Premium Jewelry on Rent"
                 },
-                "subheading": {
+                "slide1_subheading": {
                     "type": "textarea",
-                    "label": "Subheading",
+                    "label": "Slide 1 Subheading",
                     "default": "Exquisite designs for your special occasions"
                 },
-                "button_text": {
+                "slide1_btn_text": {
                     "type": "text",
-                    "label": "Button Text",
+                    "label": "Slide 1 Button",
                     "default": "Shop Now"
                 },
-                "button_url": {
+                "slide1_btn_url": {
                     "type": "text",
-                    "label": "Button URL",
+                    "label": "Slide 1 URL",
                     "default": "/shop"
                 },
-                "background_color": {
-                    "type": "color",
-                    "label": "Background Color",
-                    "default": "#121212"
+                "slide2_image": {
+                    "type": "text",
+                    "label": "Slide 2 Image URL",
+                    "default": ""
+                },
+                "slide2_heading": {
+                    "type": "text",
+                    "label": "Slide 2 Heading",
+                    "default": "Bridal Collection"
+                },
+                "slide2_subheading": {
+                    "type": "textarea",
+                    "label": "Slide 2 Subheading",
+                    "default": "Make your wedding day unforgettable"
+                },
+                "slide2_btn_text": {
+                    "type": "text",
+                    "label": "Slide 2 Button",
+                    "default": "View Collection"
+                },
+                "slide2_btn_url": {
+                    "type": "text",
+                    "label": "Slide 2 URL",
+                    "default": "/shop/collection/bridal"
+                },
+                "slide3_image": {
+                    "type": "text",
+                    "label": "Slide 3 Image URL",
+                    "default": ""
+                },
+                "slide3_heading": {
+                    "type": "text",
+                    "label": "Slide 3 Heading",
+                    "default": "Diamond Sets"
+                },
+                "slide3_subheading": {
+                    "type": "textarea",
+                    "label": "Slide 3 Subheading",
+                    "default": "Sparkle like a star with our real diamond sets"
+                },
+                "slide3_btn_text": {
+                    "type": "text",
+                    "label": "Slide 3 Button",
+                    "default": "Rent Now"
+                },
+                "slide3_btn_url": {
+                    "type": "text",
+                    "label": "Slide 3 URL",
+                    "default": "/shop/collection/diamond"
                 }
             }
         },

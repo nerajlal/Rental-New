@@ -92,6 +92,14 @@
                     if (targetEl) {
                         if (targetEl.tagName === 'IMG') {
                             targetEl.src = value;
+                        } else if (key.includes('slide') && key.includes('image')) {
+                            // Handle hero slider background image
+                            if (value) {
+                                targetEl.style.background = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${value}') no-repeat center center`;
+                                targetEl.style.backgroundSize = 'cover';
+                            } else {
+                                targetEl.style.background = `linear-gradient(135deg, #121212 0%, #2d2d2d 100%)`;
+                            }
                         } else if (targetEl.tagName === 'A' && key.includes('url')) {
                             targetEl.href = value;
                         } else if (key.includes('stars')) {
@@ -114,8 +122,8 @@
                             } else {
                                 targetEl.style.color = value;
                             }
-                        } else if (key === 'show_search' || key === 'show_ratings' || key === 'show_social') {
-                            // Reload for structural changes (toggles)
+                        } else if (key === 'show_search' || key === 'show_ratings' || key === 'show_social' || key === 'autoplay_speed') {
+                            // Reload for structural changes (toggles) or carousel settings
                             location.reload();
                         } else if (key === 'products_count') {
                              // Reload for count changes
