@@ -141,20 +141,36 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <div class="p-3 border rounded">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="fw-medium">Main Menu</div>
-                            <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill">Configured</span>
+                            <a href="{{ route('shop.navigation') }}" class="text-decoration-none small">Edit</a>
                         </div>
-                        <small class="text-subdued"><i class="fas fa-info-circle me-1"></i> Manage your main navigation menu items</small>
+                        @if(isset($mainMenu) && $mainMenu->items)
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                @foreach(json_decode($mainMenu->items, true) as $item)
+                                    <span class="badge bg-light text-dark border">{{ $item['label'] }}</span>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="text-subdued small mb-2">No menu items configured</div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="p-3 border rounded">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="fw-medium">Footer Menu</div>
-                            <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill">Configured</span>
+                            <a href="{{ route('shop.navigation') }}" class="text-decoration-none small">Edit</a>
                         </div>
-                        <small class="text-subdued"><i class="fas fa-info-circle me-1"></i> Manage your footer navigation links</small>
+                        @if(isset($footerMenu) && $footerMenu->items)
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                @foreach(json_decode($footerMenu->items, true) as $item)
+                                    <span class="badge bg-light text-dark border">{{ $item['label'] }}</span>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="text-subdued small mb-2">No menu items configured</div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -65,7 +65,7 @@
                 $themeName = $customization->theme_name ?? 'jewelry-luxe';
             @endphp
             
-            <div data-section-type="{{ $sectionType }}" style="{{ ($sectionData['is_visible'] ?? true) ? '' : 'display: none !important;' }}">
+            <div data-section-type="{{ $sectionType }}">
                 @include("admin-shop.themes.{$themeName}.sections.{$sectionType}", [
                     'data' => $sectionData,
                     'menuItems' => $menuItems,
@@ -129,13 +129,6 @@
                          sectionEl.style.backgroundColor = value;
                     }
                 }
-            } else if (event.data.type === 'update-visibility') {
-                const { section, visible } = event.data;
-                const el = document.querySelector(`[data-section-type="${section}"]`);
-                if (el) {
-                    el.style.display = visible ? '' : 'none';
-                    if (!visible) el.style.setProperty('display', 'none', 'important');
-                }
             } else if (event.data.type === 'update-order') {
                 const newOrder = event.data.order;
                 const container = document.getElementById('theme-sections');
@@ -146,6 +139,12 @@
                         container.appendChild(el);
                     }
                 });
+            } else if (event.data.type === 'toggle-section') {
+                const { section, visible } = event.data;
+                const el = document.querySelector(`[data-section-type="${section}"]`);
+                if (el) {
+                    el.style.display = visible ? 'block' : 'none';
+                }
             }
         });
     </script>

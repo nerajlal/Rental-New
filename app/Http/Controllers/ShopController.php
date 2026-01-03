@@ -57,7 +57,11 @@ class ShopController extends Controller
             ]
         );
         
-        return view('admin-shop.online-store', compact('settings'));
+        // Fetch navigation menus
+        $mainMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'main')->first();
+        $footerMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'footer')->first();
+        
+        return view('admin-shop.online-store', compact('settings', 'mainMenu', 'footerMenu'));
     }
 
     public function productsCreate()
