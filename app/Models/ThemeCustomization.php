@@ -27,7 +27,10 @@ class ThemeCustomization extends Model
     
     public function getSectionData($sectionType)
     {
-        return $this->sections[$sectionType] ?? $this->getDefaultSectionData($sectionType);
+        $saved = $this->sections[$sectionType] ?? [];
+        $defaults = $this->getDefaultSectionData($sectionType);
+        
+        return array_merge($defaults, $saved);
     }
     
     private function getDefaultSectionData($sectionType)

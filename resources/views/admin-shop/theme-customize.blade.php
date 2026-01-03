@@ -121,14 +121,14 @@
                                         class="form-control" 
                                         name="{{ $key }}"
                                         value="{{ $customization->getSectionData($section['type'])[$key] ?? $setting['default'] }}"
-                                        onchange="updatePreview('{{ $section['type'] }}', '{{ $key }}', this.value)"
+                                        oninput="updatePreview('{{ $section['type'] }}', '{{ $key }}', this.value)"
                                     >
                                 @elseif($setting['type'] == 'textarea')
                                     <textarea 
                                         class="form-control" 
                                         name="{{ $key }}"
                                         rows="3"
-                                        onchange="updatePreview('{{ $section['type'] }}', '{{ $key }}', this.value)"
+                                        oninput="updatePreview('{{ $section['type'] }}', '{{ $key }}', this.value)"
                                     >{{ $customization->getSectionData($section['type'])[$key] ?? $setting['default'] }}</textarea>
                                 @elseif($setting['type'] == 'color')
                                     <input 
@@ -136,7 +136,7 @@
                                         class="form-control form-control-color" 
                                         name="{{ $key }}"
                                         value="{{ $customization->getSectionData($section['type'])[$key] ?? $setting['default'] }}"
-                                        onchange="updatePreview('{{ $section['type'] }}', '{{ $key }}', this.value)"
+                                        oninput="updatePreview('{{ $section['type'] }}', '{{ $key }}', this.value)"
                                     >
                                 @elseif($setting['type'] == 'checkbox')
                                     <div class="form-check">
@@ -157,7 +157,7 @@
                                         value="{{ $customization->getSectionData($section['type'])[$key] ?? $setting['default'] }}"
                                         min="{{ $setting['min'] ?? 1 }}"
                                         max="{{ $setting['max'] ?? 10 }}"
-                                        onchange="updatePreview('{{ $section['type'] }}', '{{ $key }}', this.value)"
+                                        oninput="updatePreview('{{ $section['type'] }}', '{{ $key }}', this.value)"
                                     >
                                 @endif
                             </div>
