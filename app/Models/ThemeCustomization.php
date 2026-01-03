@@ -56,6 +56,22 @@ class ThemeCustomization extends Model
                 'heading' => 'What Our Customers Say',
                 'show_ratings' => true,
             ],
+            'how-it-works' => [
+                'heading' => 'How It Works',
+                'step1_title' => 'Choose',
+                'step1_desc' => 'Browse our exclusive collection and pick your favorite.',
+                'step2_title' => 'Rent',
+                'step2_desc' => 'Book for your dates and get it delivered to your doorstep.',
+                'step3_title' => 'Return',
+                'step3_desc' => 'Look stunning! Then simply pack and return.',
+            ],
+            'cta' => [
+                'heading' => 'Join our Exclusive Club',
+                'text' => 'Subscribe to get 20% off your first rental.',
+                'button_text' => 'Subscribe',
+                'button_url' => '#',
+                'background_color' => '#f8f9fa',
+            ],
             'footer' => [
                 'copyright_text' => '© 2026 All rights reserved',
                 'show_social' => true,

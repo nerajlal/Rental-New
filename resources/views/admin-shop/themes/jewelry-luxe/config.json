@@ -96,6 +96,80 @@
             }
         },
         {
+            "type": "how-it-works",
+            "name": "How It Works",
+            "icon": "fa-list-ol",
+            "settings": {
+                "heading": {
+                    "type": "text",
+                    "label": "Section Heading",
+                    "default": "How It Works"
+                },
+                "step1_title": {
+                    "type": "text",
+                    "label": "Step 1 Title",
+                    "default": "Choose"
+                },
+                "step1_desc": {
+                    "type": "textarea",
+                    "label": "Step 1 Description",
+                    "default": "Browse our exclusive collection and pick your favorite."
+                },
+                "step2_title": {
+                    "type": "text",
+                    "label": "Step 2 Title",
+                    "default": "Rent"
+                },
+                "step2_desc": {
+                    "type": "textarea",
+                    "label": "Step 2 Description",
+                    "default": "Book for your dates and get it delivered to your doorstep."
+                },
+                "step3_title": {
+                    "type": "text",
+                    "label": "Step 3 Title",
+                    "default": "Return"
+                },
+                "step3_desc": {
+                    "type": "textarea",
+                    "label": "Step 3 Description",
+                    "default": "Look stunning! Then simply pack and return."
+                }
+            }
+        },
+        {
+            "type": "cta",
+            "name": "Call to Action",
+            "icon": "fa-bullhorn",
+            "settings": {
+                "heading": {
+                    "type": "text",
+                    "label": "Heading",
+                    "default": "Join our Exclusive Club"
+                },
+                "text": {
+                    "type": "textarea",
+                    "label": "Description",
+                    "default": "Subscribe to get 20% off your first rental."
+                },
+                "button_text": {
+                    "type": "text",
+                    "label": "Button Text",
+                    "default": "Subscribe"
+                },
+                "button_url": {
+                    "type": "text",
+                    "label": "Button URL",
+                    "default": "#"
+                },
+                "background_color": {
+                    "type": "color",
+                    "label": "Background Color",
+                    "default": "#f8f9fa"
+                }
+            }
+        },
+        {
             "type": "footer",
             "name": "Footer",
             "icon": "fa-copyright",

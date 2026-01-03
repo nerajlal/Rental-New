@@ -7,7 +7,7 @@
 <header class="theme-header" style="background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000;">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light py-3">
-            <a class="navbar-brand fw-bold" href="/" style="color: var(--primary-color, #008060); font-size: 24px;">
+            <a class="navbar-brand fw-bold" href="{{ $homeUrl ?? '/' }}" style="color: var(--primary-color, #008060); font-size: 24px;">
                 <i class="fas fa-gem me-2"></i><span data-setting-key="logo_text">{{ $logoText }}</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

@@ -33,20 +33,22 @@
 <body>
     @php
         $customization = $customization ?? null;
-        $sectionOrder = $customization->section_order ?? ['header', 'hero', 'featured-products', 'testimonials', 'footer'];
+        $sectionOrder = $customization->section_order ?? ['header', 'hero', 'featured-products', 'how-it-works', 'cta', 'testimonials', 'footer'];
         $menuItems = $menuItems ?? [];
     @endphp
     
     @foreach($sectionOrder as $sectionType)
         @php
             $sectionData = $customization ? $customization->getSectionData($sectionType) : [];
+            $themeName = $customization->theme_name ?? 'jewelry-luxe';
         @endphp
         
         <div data-section-type="{{ $sectionType }}">
-            @include("admin-shop.themes.{$customization->theme_name ?? 'jewelry-luxe'}.sections.{$sectionType}", [
+            @include("admin-shop.themes.{$themeName}.sections.{$sectionType}", [
                 'data' => $sectionData,
                 'menuItems' => $menuItems,
-                'footerItems' => $footerItems ?? []
+                'footerItems' => $footerItems ?? [],
+                'homeUrl' => $homeUrl ?? route('shop.preview-store')
             ])
         </div>
     @endforeach

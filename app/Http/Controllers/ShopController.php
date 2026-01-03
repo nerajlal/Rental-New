@@ -201,23 +201,40 @@ class ShopController extends Controller
                 $customization = new \App\Models\ThemeCustomization([
                     'theme_name' => $themeName,
                     'sections' => [],
-                    'section_order' => ['header', 'hero', 'featured-products', 'testimonials', 'footer']
+                    'section_order' => ['header', 'hero', 'featured-products', 'how-it-works', 'cta', 'testimonials', 'footer']
                 ]);
             }
             
+            // Normalize links for preview context
+            $normalizeLinks = function($items) {
+                return array_map(function($item) {
+                    if ($item['url'] === '/' || $item['url'] === '/home') $item['url'] = route('shop.preview-store');
+                    if ($item['url'] === '/shop') $item['url'] = route('shop.site.products');
+                    if ($item['url'] === '/about') $item['url'] = route('shop.site.about');
+                    if ($item['url'] === '/contact') $item['url'] = route('shop.site.contact');
+                    if ($item['url'] === '/privacy') $item['url'] = route('shop.site.privacy');
+                    return $item;
+                }, $items);
+            };
+
+            $menuItems = $normalizeLinks($menuItems);
+            $footerItems = $normalizeLinks($footerItems);
+            $homeUrl = route('shop.preview-store');
+
             // Ensure we're rendering the requested theme if forced (e.g. previewing a different theme than published)
             if ($isDraft && $forcedTheme) {
                  // Verify view exists
                  if (view()->exists("admin-shop.themes.{$themeName}.index")) {
-                     return view("admin-shop.themes.{$themeName}.index", compact('settings', 'customization', 'menuItems', 'footerItems'));
+                     return view("admin-shop.themes.{$themeName}.index", compact('settings', 'customization', 'menuItems', 'footerItems', 'homeUrl'));
                  }
             } else {
-                 return view("admin-shop.themes.{$customization->theme_name}.index", compact('settings', 'customization', 'menuItems', 'footerItems'));
+                 return view("admin-shop.themes.{$customization->theme_name}.index", compact('settings', 'customization', 'menuItems', 'footerItems', 'homeUrl'));
             }
         }
 
+        $homeUrl = route('shop.preview-store');
         // Fallback to default preview
-        return view('admin-shop.preview-store', compact('settings', 'menuItems', 'footerItems'));
+        return view('admin-shop.preview-store', compact('settings', 'menuItems', 'footerItems', 'homeUrl'));
     }
 
     public function themes()
@@ -298,12 +315,28 @@ class ShopController extends Controller
         
         $viewPath = "admin-shop.themes.{$customization->theme_name}.pages.{$view}";
         
+        // Normalize links
+        $normalizeLinks = function($items) {
+            return array_map(function($item) {
+                if ($item['url'] === '/' || $item['url'] === '/home') $item['url'] = route('shop.preview-store');
+                if ($item['url'] === '/shop') $item['url'] = route('shop.site.products');
+                if ($item['url'] === '/about') $item['url'] = route('shop.site.about');
+                if ($item['url'] === '/contact') $item['url'] = route('shop.site.contact');
+                if ($item['url'] === '/privacy') $item['url'] = route('shop.site.privacy');
+                return $item;
+            }, $items);
+        };
+        
+        $menuItems = $normalizeLinks($menuItems);
+        $footerItems = $normalizeLinks($footerItems);
+        $homeUrl = route('shop.preview-store');
+        
         // Fallback or create if dynamic lookup needed, for now assuming jewelry-luxe
         if (!view()->exists($viewPath)) {
             $viewPath = "admin-shop.themes.jewelry-luxe.pages.{$view}";
         }
         
-        return view($viewPath, compact('settings', 'customization', 'menuItems', 'footerItems', 'data'));
+        return view($viewPath, compact('settings', 'customization', 'menuItems', 'footerItems', 'data', 'homeUrl'));
     }
 
     public function siteProducts() { return $this->renderThemePage('products'); }
