@@ -1,0 +1,116 @@
+{
+    "name": "Jewelry Luxe",
+    "version": "2.1.0",
+    "author": "Metora",
+    "description": "Premium jewelry rental theme with elegant design",
+    "screenshot": "/images/themes/jewelry-luxe.jpg",
+    "sections": [
+        {
+            "type": "header",
+            "name": "Header",
+            "icon": "fa-bars",
+            "settings": {
+                "logo_text": {
+                    "type": "text",
+                    "label": "Store Name",
+                    "default": "Your Store"
+                },
+                "show_search": {
+                    "type": "checkbox",
+                    "label": "Show Search Bar",
+                    "default": true
+                }
+            }
+        },
+        {
+            "type": "hero",
+            "name": "Hero Banner",
+            "icon": "fa-image",
+            "settings": {
+                "heading": {
+                    "type": "text",
+                    "label": "Main Heading",
+                    "default": "Premium Jewelry on Rent"
+                },
+                "subheading": {
+                    "type": "textarea",
+                    "label": "Subheading",
+                    "default": "Exquisite designs for your special occasions"
+                },
+                "button_text": {
+                    "type": "text",
+                    "label": "Button Text",
+                    "default": "Shop Now"
+                },
+                "button_url": {
+                    "type": "text",
+                    "label": "Button URL",
+                    "default": "/shop"
+                },
+                "background_color": {
+                    "type": "color",
+                    "label": "Background Color",
+                    "default": "#008060"
+                }
+            }
+        },
+        {
+            "type": "featured-products",
+            "name": "Featured Products",
+            "icon": "fa-gem",
+            "settings": {
+                "heading": {
+                    "type": "text",
+                    "label": "Section Heading",
+                    "default": "Featured Collection"
+                },
+                "subheading": {
+                    "type": "text",
+                    "label": "Subheading",
+                    "default": "Discover our most popular jewelry pieces"
+                },
+                "products_count": {
+                    "type": "number",
+                    "label": "Number of Products",
+                    "default": 4,
+                    "min": 2,
+                    "max": 8
+                }
+            }
+        },
+        {
+            "type": "testimonials",
+            "name": "Customer Testimonials",
+            "icon": "fa-quote-left",
+            "settings": {
+                "heading": {
+                    "type": "text",
+                    "label": "Section Heading",
+                    "default": "What Our Customers Say"
+                },
+                "show_ratings": {
+                    "type": "checkbox",
+                    "label": "Show Star Ratings",
+                    "default": true
+                }
+            }
+        },
+        {
+            "type": "footer",
+            "name": "Footer",
+            "icon": "fa-copyright",
+            "settings": {
+                "copyright_text": {
+                    "type": "text",
+                    "label": "Copyright Text",
+                    "default": "© 2026 All rights reserved"
+                },
+                "show_social": {
+                    "type": "checkbox",
+                    "label": "Show Social Media Links",
+                    "default": true
+                }
+            }
+        }
+    ]
+}

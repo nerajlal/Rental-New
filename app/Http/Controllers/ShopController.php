@@ -48,7 +48,16 @@ class ShopController extends Controller
 
     public function onlineStore()
     {
-        return view('admin-shop.online-store');
+        $settings = \App\Models\StoreSettings::firstOrCreate(
+            ['user_id' => auth()->id()],
+            [
+                'subdomain' => null,
+                'homepage_title' => 'Premium Jewelry on Rent | Exquisite Bridal & Party Jewelry',
+                'homepage_description' => 'Rent exquisite jewelry for weddings, parties, and special occasions. Premium bridal sets, diamond bangles, and traditional ornaments at affordable prices.',
+            ]
+        );
+        
+        return view('admin-shop.online-store', compact('settings'));
     }
 
     public function productsCreate()
@@ -119,5 +128,64 @@ class ShopController extends Controller
         );
 
         return response()->json(['success' => true, 'message' => 'Navigation saved successfully']);
+    }
+
+    public function saveStoreSettings(Request $request)
+    {
+        $validated = $request->validate([
+            'homepage_title' => 'nullable|string|max:255',
+            'homepage_description' => 'nullable|string|max:500',
+            'google_analytics_id' => 'nullable|string|max:50',
+            'facebook_pixel_id' => 'nullable|string|max:50',
+            'password_protected' => 'boolean',
+            'allow_search_indexing' => 'boolean',
+        ]);
+
+        $settings = \App\Models\StoreSettings::where('user_id', auth()->id())->first();
+        
+        if ($settings) {
+            $settings->update($validated);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Store settings saved successfully']);
+    }
+
+    public function updateSubdomain(Request $request)
+    {
+        $validated = $request->validate([
+            'subdomain' => 'required|string|alpha_dash|max:50|unique:store_settings,subdomain,' . auth()->id() . ',user_id'
+        ]);
+
+        $settings = \App\Models\StoreSettings::where('user_id', auth()->id())->first();
+        
+        if ($settings) {
+            $settings->update(['subdomain' => strtolower($validated['subdomain'])]);
+            return response()->json([
+                'success' => true, 
+                'message' => 'Subdomain updated successfully',
+                'full_subdomain' => $settings->full_subdomain
+            ]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Settings not found'], 404);
+    }
+
+    public function previewStore()
+    {
+        $settings = \App\Models\StoreSettings::where('user_id', auth()->id())->first();
+        
+        if (!$settings) {
+            return redirect()->route('shop.online-store')->with('error', 'Please configure your store settings first.');
+        }
+
+        // Get navigation menus
+        $mainMenu = \DB::table('navigation_menus')
+            ->where('user_id', auth()->id())
+            ->where('type', 'main')
+            ->first();
+
+        $mainMenuItems = $mainMenu ? json_decode($mainMenu->items, true) : [];
+
+        return view('admin-shop.preview-store', compact('settings', 'mainMenuItems'));
     }
 }

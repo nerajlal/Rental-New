@@ -45,6 +45,9 @@ Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
     Route::get('/marketing', [ShopController::class, 'marketing'])->name('marketing');
     Route::get('/discounts', [ShopController::class, 'discounts'])->name('discounts');
     Route::get('/online-store', [ShopController::class, 'onlineStore'])->name('online-store');
+    Route::post('/online-store/save', [ShopController::class, 'saveStoreSettings'])->name('online-store.save');
+    Route::post('/online-store/subdomain', [ShopController::class, 'updateSubdomain'])->name('online-store.subdomain');
+    Route::get('/preview-store', [ShopController::class, 'previewStore'])->name('preview-store');
     
     // Rental Management
     Route::get('/calendar', [ShopController::class, 'calendar'])->name('calendar');
