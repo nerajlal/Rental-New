@@ -92,6 +92,51 @@
                     "type": "checkbox",
                     "label": "Show Star Ratings",
                     "default": true
+                },
+                "t1_name": {
+                    "type": "text",
+                    "label": "Testimonial 1 Name",
+                    "default": "Priya Sharma"
+                },
+                "t1_text": {
+                    "type": "textarea",
+                    "label": "Testimonial 1 Message",
+                    "default": "Absolutely stunning jewelry! Made my wedding day extra special."
+                },
+                "t1_stars": {
+                    "type": "number",
+                    "label": "Testimonial 1 Stars (1-5)",
+                    "default": 5
+                },
+                "t2_name": {
+                    "type": "text",
+                    "label": "Testimonial 2 Name",
+                    "default": "Anjali Patel"
+                },
+                "t2_text": {
+                    "type": "textarea",
+                    "label": "Testimonial 2 Message",
+                    "default": "Beautiful collection and amazing service. I rented bridal jewelry for my sister's wedding."
+                },
+                "t2_stars": {
+                    "type": "number",
+                    "label": "Testimonial 2 Stars (1-5)",
+                    "default": 5
+                },
+                "t3_name": {
+                    "type": "text",
+                    "label": "Testimonial 3 Name",
+                    "default": "Meera Reddy"
+                },
+                "t3_text": {
+                    "type": "textarea",
+                    "label": "Testimonial 3 Message",
+                    "default": "Highly recommend! The jewelry pieces are exquisite and the team is very professional."
+                },
+                "t3_stars": {
+                    "type": "number",
+                    "label": "Testimonial 3 Stars (1-5)",
+                    "default": 5
                 }
             }
         },

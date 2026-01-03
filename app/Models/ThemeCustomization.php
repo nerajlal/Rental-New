@@ -55,6 +55,15 @@ class ThemeCustomization extends Model
             'testimonials' => [
                 'heading' => 'What Our Customers Say',
                 'show_ratings' => true,
+                't1_name' => 'Priya Sharma',
+                't1_text' => 'Absolutely stunning jewelry! Made my wedding day extra special.',
+                't1_stars' => 5,
+                't2_name' => 'Anjali Patel',
+                't2_text' => "Beautiful collection and amazing service. I rented bridal jewelry for my sister's wedding.",
+                't2_stars' => 5,
+                't3_name' => 'Meera Reddy',
+                't3_text' => 'Highly recommend! The jewelry pieces are exquisite and the team is very professional.',
+                't3_stars' => 5,
             ],
             'how-it-works' => [
                 'heading' => 'How It Works',
