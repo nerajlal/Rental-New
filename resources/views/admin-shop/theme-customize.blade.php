@@ -90,6 +90,9 @@
                 <div class="section-item" onclick="showSettings('{{ $section['type'] }}')" id="section-{{ $section['type'] }}">
                     <div class="d-flex align-items-center gap-2">
                         <i class="fas fa-grip-vertical text-muted drag-handle me-1" style="cursor: move; opacity: 0.5;"></i>
+                        <div class="div d-flex align-items-center" onclick="event.stopPropagation(); toggleVisibility('{{ $section['type'] }}', this)">
+                             <i class="fas fa-eye text-muted visibility-icon" id="vis-{{ $section['type'] }}" title="Toggle Visibility" style="cursor: pointer; width: 20px;"></i>
+                        </div>
                         <i class="fas {{ $section['icon'] }}" style="color: var(--p-primary); width: 20px;"></i>
                         <div class="flex-grow-1">
                             <div class="fw-medium">{{ $section['name'] }}</div>
@@ -99,6 +102,40 @@
                 </div>
             @endforeach
         </div>
+<!-- ... -->
+<script>
+// ...
+function toggleVisibility(sectionType, btn) {
+    // Initialize if undefined
+    if (!customizationData[sectionType]) customizationData[sectionType] = {};
+    if (customizationData[sectionType].is_visible === undefined) customizationData[sectionType].is_visible = true;
+    
+    // Toggle
+    const newState = !customizationData[sectionType].is_visible;
+    customizationData[sectionType].is_visible = newState;
+    
+    // Update Icon
+    const icon = btn.querySelector('i');
+    if (newState) {
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+        icon.style.opacity = '1';
+    } else {
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+        icon.style.opacity = '0.5';
+    }
+    
+    // Notify Preview
+    const iframe = document.getElementById('previewFrame');
+    iframe.contentWindow.postMessage({
+        type: 'update-visibility',
+        section: sectionType,
+        visible: newState
+    }, '*');
+}
+// ...
+
 
         <!-- Settings Panels -->
         <div id="settingsPanels" style="flex: 1; overflow-y: auto;">
@@ -219,6 +256,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }, '*');
         }
     });
+
+    // Sync Visibility Icons
+    for (const [type, data] of Object.entries(customizationData)) {
+        if (data && data.is_visible === false) {
+            const icon = document.querySelector(`#vis-${type}`);
+            if (icon) {
+                 icon.classList.remove('fa-eye');
+                 icon.classList.add('fa-eye-slash');
+                 icon.style.opacity = '0.5';
+            }
+        }
+    }
 });
     
 function saveCustomization() {

@@ -65,7 +65,7 @@
                 $themeName = $customization->theme_name ?? 'jewelry-luxe';
             @endphp
             
-            <div data-section-type="{{ $sectionType }}">
+            <div data-section-type="{{ $sectionType }}" style="{{ ($sectionData['is_visible'] ?? true) ? '' : 'display: none !important;' }}">
                 @include("admin-shop.themes.{$themeName}.sections.{$sectionType}", [
                     'data' => $sectionData,
                     'menuItems' => $menuItems,
@@ -128,6 +128,13 @@
                          // Fallback if no specific target but section bg needs update
                          sectionEl.style.backgroundColor = value;
                     }
+                }
+            } else if (event.data.type === 'update-visibility') {
+                const { section, visible } = event.data;
+                const el = document.querySelector(`[data-section-type="${section}"]`);
+                if (el) {
+                    el.style.display = visible ? '' : 'none';
+                    if (!visible) el.style.setProperty('display', 'none', 'important');
                 }
             } else if (event.data.type === 'update-order') {
                 const newOrder = event.data.order;
