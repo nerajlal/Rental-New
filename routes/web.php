@@ -59,6 +59,12 @@ Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
     Route::get('/navigation', [ShopController::class, 'navigation'])->name('navigation');
     Route::post('/navigation/save', [ShopController::class, 'saveNavigation'])->name('navigation.save');
     
+    // Theme Customization
+    Route::get('/themes', [ShopController::class, 'themes'])->name('themes');
+    Route::get('/themes/{theme}/customize', [ShopController::class, 'customizeTheme'])->name('themes.customize');
+    Route::post('/themes/save', [ShopController::class, 'saveThemeCustomization'])->name('themes.save');
+    Route::post('/themes/publish', [ShopController::class, 'publishTheme'])->name('themes.publish');
+    
     // Inner pages
     Route::get('/products/create', [ShopController::class, 'productsCreate'])->name('products.create');
     Route::get('/orders/{id}', [ShopController::class, 'ordersView'])->name('orders.view');

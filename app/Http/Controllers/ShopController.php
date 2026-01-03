@@ -188,4 +188,69 @@ class ShopController extends Controller
 
         return view('admin-shop.preview-store', compact('settings', 'mainMenuItems'));
     }
+
+    public function themes()
+    {
+        $themes = [
+            ['name' => 'jewelry-luxe', 'title' => 'Jewelry Luxe', 'description' => 'Premium jewelry rental theme'],
+            ['name' => 'minimal-elegance', 'title' => 'Minimal Elegance', 'description' => 'Clean and sophisticated'],
+            ['name' => 'royal-collection', 'title' => 'Royal Collection', 'description' => 'Traditional and ornate'],
+        ];
+        
+        $currentTheme = \App\Models\ThemeCustomization::where('user_id', auth()->id())->first();
+        
+        return view('admin-shop.themes', compact('themes', 'currentTheme'));
+    }
+
+    public function customizeTheme($themeName)
+    {
+        // Load or create customization
+        $customization = \App\Models\ThemeCustomization::firstOrCreate(
+            ['user_id' => auth()->id()],
+            ['theme_name' => $themeName]
+        );
+        
+        // Load theme config
+        $configPath = resource_path("views/admin-shop/themes/{$themeName}/config.json");
+        $config = json_decode(file_get_contents($configPath), true);
+        
+        // Get menu items
+        $mainMenu = \DB::table('navigation_menus')
+            ->where('user_id', auth()->id())
+            ->where('type', 'main')
+            ->first();
+        $menuItems = $mainMenu ? json_decode($mainMenu->items, true) : [];
+        
+        // Get store settings
+        $settings = \App\Models\StoreSettings::where('user_id', auth()->id())->first();
+        
+        return view('admin-shop.theme-customize', compact('customization', 'config', 'themeName', 'menuItems', 'settings'));
+    }
+
+    public function saveThemeCustomization(Request $request)
+    {
+        $customization = \App\Models\ThemeCustomization::where('user_id', auth()->id())->first();
+        
+        if (!$customization) {
+            return response()->json(['success' => false, 'message' => 'Customization not found'], 404);
+        }
+        
+        $sections = json_decode($request->sections, true);
+        $customization->update(['sections' => $sections]);
+        
+        return response()->json(['success' => true, 'message' => 'Customization saved successfully']);
+    }
+
+    public function publishTheme(Request $request)
+    {
+        $customization = \App\Models\ThemeCustomization::where('user_id', auth()->id())->first();
+        
+        if (!$customization) {
+            return response()->json(['success' => false, 'message' => 'Customization not found'], 404);
+        }
+        
+        $customization->update(['published' => true]);
+        
+        return response()->json(['success' => true, 'message' => 'Theme published successfully']);
+    }
 }
