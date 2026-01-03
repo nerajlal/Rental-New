@@ -170,7 +170,7 @@ class ShopController extends Controller
         return response()->json(['success' => false, 'message' => 'Settings not found'], 404);
     }
 
-    public function previewStore()
+    public function previewStore(Request $request)
     {
         $settings = \App\Models\StoreSettings::where('user_id', auth()->id())->first();
         
@@ -178,9 +178,6 @@ class ShopController extends Controller
             return redirect()->route('shop.online-store')->with('error', 'Please configure your store settings first.');
         }
 
-        // Get theme customization
-        $customization = \App\Models\ThemeCustomization::where('user_id', auth()->id())->first();
-        
         // Get navigation menus
         $mainMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'main')->first();
         $menuItems = $mainMenu ? json_decode($mainMenu->items, true) : [];
@@ -188,9 +185,35 @@ class ShopController extends Controller
         $footerMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'footer')->first();
         $footerItems = $footerMenu ? json_decode($footerMenu->items, true) : [];
 
-        // If customization exists, use theme template
-        if ($customization && $customization->published) {
-            return view("admin-shop.themes.{$customization->theme_name}.index", compact('settings', 'customization', 'menuItems', 'footerItems'));
+        // Check for draft mode from Customizer
+        $isDraft = $request->query('mode') === 'draft';
+        $forcedTheme = $request->query('theme');
+        
+        // Get theme customization
+        $customization = \App\Models\ThemeCustomization::where('user_id', auth()->id())->first();
+
+        // If customization exists and is published, OR if we are in draft mode
+        if (($customization && $customization->published) || $isDraft) {
+            $themeName = $forcedTheme ?? ($customization->theme_name ?? 'jewelry-luxe');
+            
+            // If in draft mode but no customization saved yet, create a dummy one for the view
+            if (!$customization && $isDraft) {
+                $customization = new \App\Models\ThemeCustomization([
+                    'theme_name' => $themeName,
+                    'sections' => [],
+                    'section_order' => ['header', 'hero', 'featured-products', 'testimonials', 'footer']
+                ]);
+            }
+            
+            // Ensure we're rendering the requested theme if forced (e.g. previewing a different theme than published)
+            if ($isDraft && $forcedTheme) {
+                 // Verify view exists
+                 if (view()->exists("admin-shop.themes.{$themeName}.index")) {
+                     return view("admin-shop.themes.{$themeName}.index", compact('settings', 'customization', 'menuItems', 'footerItems'));
+                 }
+            } else {
+                 return view("admin-shop.themes.{$customization->theme_name}.index", compact('settings', 'customization', 'menuItems', 'footerItems'));
+            }
         }
 
         // Fallback to default preview

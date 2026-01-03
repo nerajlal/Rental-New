@@ -184,7 +184,7 @@
                 </button>
             </div>
         </div>
-        <iframe id="previewFrame" class="customizer-iframe" src="{{ route('shop.preview-store') }}"></iframe>
+        <iframe id="previewFrame" class="customizer-iframe" src="{{ route('shop.preview-store', ['mode' => 'draft', 'theme' => $themeName ?? 'jewelry-luxe']) }}"></iframe>
     </div>
 </div>
 
