@@ -73,6 +73,12 @@ class ThemeCustomization extends Model
                 'background_color' => '#f8f9fa',
             ],
             'footer' => [
+                'description' => 'Premium jewelry rental service for all your special occasions.',
+                'email' => 'info@yourstore.com',
+                'phone' => '+1 234 567 8900',
+                'facebook_url' => '#',
+                'instagram_url' => '#',
+                'pinterest_url' => '#',
                 'copyright_text' => '© 2026 All rights reserved',
                 'show_social' => true,
             ],

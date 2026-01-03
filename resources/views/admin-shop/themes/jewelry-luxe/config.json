@@ -174,6 +174,36 @@
             "name": "Footer",
             "icon": "fa-copyright",
             "settings": {
+                "description": {
+                    "type": "textarea",
+                    "label": "About Text",
+                    "default": "Premium jewelry rental service for all your special occasions."
+                },
+                "email": {
+                    "type": "text",
+                    "label": "Email Address",
+                    "default": "info@yourstore.com"
+                },
+                "phone": {
+                    "type": "text",
+                    "label": "Phone Number",
+                    "default": "+1 234 567 8900"
+                },
+                "facebook_url": {
+                    "type": "text",
+                    "label": "Facebook URL",
+                    "default": "#"
+                },
+                "instagram_url": {
+                    "type": "text",
+                    "label": "Instagram URL",
+                    "default": "#"
+                },
+                "pinterest_url": {
+                    "type": "text",
+                    "label": "Pinterest URL",
+                    "default": "#"
+                },
                 "copyright_text": {
                     "type": "text",
                     "label": "Copyright Text",

@@ -1,5 +1,11 @@
 @php
     $data = $data ?? [];
+    $description = $data['description'] ?? 'Premium jewelry rental service for all your special occasions.';
+    $email = $data['email'] ?? 'info@yourstore.com';
+    $phone = $data['phone'] ?? '+1 234 567 8900';
+    $facebookUrl = $data['facebook_url'] ?? '#';
+    $instagramUrl = $data['instagram_url'] ?? '#';
+    $pinterestUrl = $data['pinterest_url'] ?? '#';
     $copyrightText = $data['copyright_text'] ?? '© 2026 All rights reserved';
     $showSocial = $data['show_social'] ?? true;
 @endphp
@@ -11,8 +17,8 @@
                 <h5 class="fw-bold mb-3" style="color: var(--primary-color, #008060);">
                     <i class="fas fa-gem me-2"></i>{{ auth()->user()->name ?? 'Your Store' }}
                 </h5>
-                <p class="text-subdued small">
-                    Premium jewelry rental service for all your special occasions.
+                <p class="text-subdued small" data-setting-key="description">
+                    {{ $description }}
                 </p>
             </div>
             <div class="col-md-4">
@@ -30,16 +36,16 @@
             <div class="col-md-4">
                 <h6 class="fw-bold mb-3">Contact</h6>
                 <p class="text-subdued small mb-2">
-                    <i class="fas fa-envelope me-2"></i>info@yourstore.com
+                    <i class="fas fa-envelope me-2"></i><span data-setting-key="email">{{ $email }}</span>
                 </p>
                 <p class="text-subdued small mb-3">
-                    <i class="fas fa-phone me-2"></i>+1 234 567 8900
+                    <i class="fas fa-phone me-2"></i><span data-setting-key="phone">{{ $phone }}</span>
                 </p>
                 @if($showSocial)
                     <div class="social-links mt-3">
-                        <a href="#" class="text-subdued me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-subdued me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-subdued me-3"><i class="fab fa-pinterest fa-lg"></i></a>
+                        <a href="{{ $facebookUrl }}" class="text-subdued me-3" data-setting-key="facebook_url"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="{{ $instagramUrl }}" class="text-subdued me-3" data-setting-key="instagram_url"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="{{ $pinterestUrl }}" class="text-subdued me-3" data-setting-key="pinterest_url"><i class="fab fa-pinterest fa-lg"></i></a>
                     </div>
                 @endif
             </div>
