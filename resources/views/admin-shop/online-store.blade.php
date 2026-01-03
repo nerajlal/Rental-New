@@ -212,7 +212,7 @@
         <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="fw-bold mb-0">Navigation</h6>
-                <a href="#" class="p-btn btn-sm">Manage menus</a>
+                <a href="{{ route('shop.navigation') }}" class="p-btn btn-sm">Manage menus</a>
             </div>
             
             <div class="row g-3">

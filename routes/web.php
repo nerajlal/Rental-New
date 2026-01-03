@@ -52,6 +52,10 @@ Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
     Route::get('/deposits', [ShopController::class, 'deposits'])->name('deposits');
     Route::get('/maintenance', [ShopController::class, 'maintenance'])->name('maintenance');
     
+    // Navigation Editor
+    Route::get('/navigation', [ShopController::class, 'navigation'])->name('navigation');
+    Route::post('/navigation/save', [ShopController::class, 'saveNavigation'])->name('navigation.save');
+    
     // Inner pages
     Route::get('/products/create', [ShopController::class, 'productsCreate'])->name('products.create');
     Route::get('/orders/{id}', [ShopController::class, 'ordersView'])->name('orders.view');

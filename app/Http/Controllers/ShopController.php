@@ -80,4 +80,44 @@ class ShopController extends Controller
     {
         return view('admin-shop.maintenance');
     }
+
+    public function navigation()
+    {
+        // Get or create default navigation menus
+        $mainMenu = \DB::table('navigation_menus')
+            ->where('user_id', auth()->id())
+            ->where('type', 'main')
+            ->first();
+            
+        $footerMenu = \DB::table('navigation_menus')
+            ->where('user_id', auth()->id())
+            ->where('type', 'footer')
+            ->first();
+            
+        return view('admin-shop.navigation', [
+            'mainMenu' => $mainMenu ? json_decode($mainMenu->items, true) : [],
+            'footerMenu' => $footerMenu ? json_decode($footerMenu->items, true) : []
+        ]);
+    }
+
+    public function saveNavigation(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'type' => 'required|in:main,footer',
+            'items' => 'required|json'
+        ]);
+
+        \DB::table('navigation_menus')->updateOrInsert(
+            [
+                'user_id' => auth()->id(),
+                'type' => $request->type
+            ],
+            [
+                'items' => $request->items,
+                'updated_at' => now()
+            ]
+        );
+
+        return response()->json(['success' => true, 'message' => 'Navigation saved successfully']);
+    }
 }
