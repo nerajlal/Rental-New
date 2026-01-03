@@ -42,10 +42,12 @@
             $sectionData = $customization ? $customization->getSectionData($sectionType) : [];
         @endphp
         
-        @include("admin-shop.themes.{$customization->theme_name ?? 'jewelry-luxe'}.sections.{$sectionType}", [
-            'data' => $sectionData,
-            'menuItems' => $menuItems
-        ])
+        <div data-section-type="{{ $sectionType }}">
+            @include("admin-shop.themes.{$customization->theme_name ?? 'jewelry-luxe'}.sections.{$sectionType}", [
+                'data' => $sectionData,
+                'menuItems' => $menuItems
+            ])
+        </div>
     @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -53,9 +55,48 @@
     <script>
         // Listen for customizer updates
         window.addEventListener('message', function(event) {
-            if (event.data.type === 'update-section') {
-                // Reload the page to show updates
-                location.reload();
+            if (event.data.type === 'update-settings') {
+                const { section, key, value } = event.data;
+                const sectionEl = document.querySelector(`[data-section-type="${section}"]`);
+                
+                if (sectionEl) {
+                    // Find element with data-setting-key
+                    const targetEl = sectionEl.querySelector(`[data-setting-key="${key}"]`);
+                    
+                    if (targetEl) {
+                        if (targetEl.tagName === 'IMG') {
+                            targetEl.src = value;
+                        } else if (targetEl.tagName === 'A' && key.includes('url')) {
+                            targetEl.href = value;
+                        } else if (key.includes('color')) {
+                             // Handle background color or text color
+                            if (key === 'background_color') {
+                                // Specific logic for hero section background gradient
+                                if(section === 'hero') {
+                                     sectionEl.style.background = `linear-gradient(135deg, ${value} 0%, #00a876 100%)`;
+                                     const btn = sectionEl.querySelector('.btn');
+                                     if(btn) btn.style.color = value;
+                                } else {
+                                     sectionEl.style.backgroundColor = value;
+                                }
+                            } else {
+                                targetEl.style.color = value;
+                            }
+                        } else if (key === 'show_search' || key === 'show_ratings' || key === 'show_social') {
+                            // Reload for structural changes (toggles)
+                            location.reload();
+                        } else if (key === 'products_count') {
+                             // Reload for count changes
+                             location.reload();
+                        } else {
+                            // Text updates
+                            targetEl.innerText = value;
+                        }
+                    } else if (key === 'show_search' || key === 'show_ratings' || key === 'show_social' || key === 'products_count') {
+                        // Fallback reload if element not found but it's a structural setting
+                         location.reload();
+                    }
+                }
             }
         });
     </script>

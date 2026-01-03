@@ -20,8 +20,8 @@
 <section class="featured-products-section py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-2">{{ $heading }}</h2>
-            <p class="text-subdued">{{ $subheading }}</p>
+            <h2 class="fw-bold mb-2" data-setting-key="heading">{{ $heading }}</h2>
+            <p class="text-subdued" data-setting-key="subheading">{{ $subheading }}</p>
         </div>
         
         <div class="row g-4">

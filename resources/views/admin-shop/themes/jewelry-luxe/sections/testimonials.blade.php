@@ -14,7 +14,7 @@
 <section class="testimonials-section py-5" style="background: #f9fafb;">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold">{{ $heading }}</h2>
+            <h2 class="fw-bold" data-setting-key="heading">{{ $heading }}</h2>
         </div>
         
         <div class="row g-4">

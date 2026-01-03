@@ -43,7 +43,7 @@
         </div>
         <hr class="my-4" style="border-color: #e1e3e5;">
         <div class="text-center">
-            <p class="text-muted small mb-0">{{ $copyrightText }}</p>
+            <p class="text-muted small mb-0" data-setting-key="copyright_text">{{ $copyrightText }}</p>
         </div>
     </div>
 </footer>

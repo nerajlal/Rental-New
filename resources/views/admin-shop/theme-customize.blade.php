@@ -213,10 +213,16 @@ function updatePreview(sectionType, key, value) {
     }
     customizationData[sectionType][key] = value;
     
-    // Trigger preview reload (simplified - in production would use postMessage)
-    setTimeout(() => {
-        document.getElementById('previewFrame').contentWindow.location.reload();
-    }, 500);
+    // Send update to preview iframe via postMessage
+    const iframe = document.getElementById('previewFrame');
+    if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+            type: 'update-settings',
+            section: sectionType,
+            key: key,
+            value: value
+        }, '*');
+    }
 }
 
 function saveCustomization() {
