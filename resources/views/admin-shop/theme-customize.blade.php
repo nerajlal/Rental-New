@@ -39,10 +39,31 @@
 }
 
 .customizer-iframe {
-    flex: 1;
     background: white;
     border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.customizer-iframe.mobile-mode {
+    width: 375px;
+    height: 812px; /* iPhone X dimensions roughly */
+    border-radius: 20px;
+    border: 8px solid #202223;
+}
+.customizer-iframe.desktop-mode {
     width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+}
+.preview-wrapper {
+    flex: 1;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
 }
 
 .section-item {
@@ -173,10 +194,20 @@
     <!-- Preview Area -->
     <div class="customizer-preview">
         <div class="customizer-toolbar">
-            <div>
+            <div class="d-flex align-items-center">
                 <strong>{{ $config['name'] }}</strong>
                 <span class="ms-2 text-muted small">| Live Preview</span>
             </div>
+            
+            <div class="d-flex gap-2 mx-auto">
+                <button type="button" class="btn btn-sm btn-dark" onclick="setViewport('mobile')" title="Mobile View">
+                    <i class="fas fa-mobile-alt"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="setViewport('desktop')" title="Desktop View">
+                    <i class="fas fa-desktop"></i>
+                </button>
+            </div>
+
             <div class="d-flex gap-2">
                 <button class="btn btn-sm btn-light" onclick="saveCustomization()">
                     <i class="fas fa-save me-1"></i> Save
@@ -186,7 +217,9 @@
                 </button>
             </div>
         </div>
-        <iframe id="previewFrame" class="customizer-iframe" src="{{ route('shop.preview-store', ['mode' => 'draft', 'theme' => $themeName ?? 'jewelry-luxe']) }}"></iframe>
+        <div class="preview-wrapper">
+            <iframe id="previewFrame" class="customizer-iframe mobile-mode" src="{{ route('shop.preview-store', ['mode' => 'draft', 'theme' => $themeName ?? 'jewelry-luxe']) }}"></iframe>
+        </div>
     </div>
 </div>
 
@@ -397,6 +430,17 @@ function publishTheme() {
         button.disabled = false;
         button.innerHTML = originalText;
     });
+}
+
+function setViewport(mode) {
+    const iframe = document.getElementById('previewFrame');
+    if (mode === 'mobile') {
+        iframe.classList.add('mobile-mode');
+        iframe.classList.remove('desktop-mode');
+    } else {
+        iframe.classList.remove('mobile-mode');
+        iframe.classList.add('desktop-mode');
+    }
 }
 </script>
 @endsection

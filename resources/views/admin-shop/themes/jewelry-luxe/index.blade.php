@@ -8,7 +8,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -19,36 +19,78 @@
             --primary-color: {{ $settings->primary_color ?? '#D4AF37' }};
             --text-color: {{ $settings->text_color ?? '#1C1B1B' }};
             --bg-color: {{ $settings->background_color ?? '#ffffff' }};
+            --secondary-bg: #f8f9fa;
         }
         
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-color);
             background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         h1, h2, h3, h4, h5, h6, .navbar-brand {
             font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
         }
         
-        .fw-bold {
-            font-weight: 700 !important;
-        }
-
+        .fw-bold { font-weight: 700 !important; }
+        
         .btn {
             font-family: 'Inter', sans-serif;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 0 !important;
+            padding: 12px 28px;
+            transition: all 0.3s ease;
         }
         
-        .text-subdued {
-            color: #6d7175;
+        .btn-primary, .btn-dark, .btn-outline-light {
+            background-color: #000;
+            border-color: #000;
+            color: #fff;
         }
+        
+        .btn-outline-light {
+            background-color: transparent;
+            border-color: #fff;
+        }
+
+        .btn-primary:hover, .btn-dark:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-dark {
+            border-width: 1px;
+            border-color: #000;
+            color: #000;
+        }
+        
+        .btn-outline-dark:hover {
+            background-color: #000;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        .text-subdued { color: #666; font-weight: 300; }
+        
+        /* Utility */
+        .group-hover-zoom:hover .bg-cover { transform: scale(1.05); }
+        .hover-lift { transition: transform 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); }
+        
+        section { padding: 4rem 0; }
     </style>
 </head>
 <body>
@@ -100,6 +142,14 @@
                             } else {
                                 targetEl.style.background = `linear-gradient(135deg, #121212 0%, #2d2d2d 100%)`;
                             }
+                        } else if (key.includes('cat') && key.includes('image') || key.includes('col') && key.includes('image')) {
+                             // Handle collection cards background
+                             if (value) {
+                                targetEl.style.backgroundImage = `url('${value}')`;
+                             }
+                        } else if (targetEl.tagName === 'I') {
+                             // Handle Icons
+                             targetEl.className = `fas ${value} fa-2x mb-3 text-muted`;
                         } else if (targetEl.tagName === 'A' && key.includes('url')) {
                             targetEl.href = value;
                         } else if (key.includes('stars')) {

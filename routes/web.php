@@ -72,6 +72,7 @@ Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
     // Live Site Pages (Preview)
     Route::prefix('site')->name('site.')->group(function () {
         Route::get('/products', [ShopController::class, 'siteProducts'])->name('products');
+        Route::get('/product/{id}', [ShopController::class, 'siteProduct'])->name('product.view');
         Route::get('/about', [ShopController::class, 'siteAbout'])->name('about');
         Route::get('/contact', [ShopController::class, 'siteContact'])->name('contact');
         Route::get('/privacy', [ShopController::class, 'sitePrivacy'])->name('privacy');

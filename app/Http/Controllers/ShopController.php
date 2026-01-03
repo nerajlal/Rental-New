@@ -380,6 +380,18 @@ class ShopController extends Controller
         return view($viewPath, compact('settings', 'customization', 'menuItems', 'footerItems', 'data', 'homeUrl'));
     }
 
+        public function siteProduct($id) {
+        // Mock product for now
+        $product = (object)[
+            'id' => $id, 
+            'name' => 'Sample Product', 
+            'price' => 1000, 
+            'description' => 'A beautiful jewelry piece perfect for any occasion.', 
+            'images' => ['/images/sample-product.jpg']
+        ];
+        return $this->renderThemePage('product', ['product' => $product]);
+    }
+    
     public function siteProducts() { return $this->renderThemePage('products'); }
     public function siteAbout() { return $this->renderThemePage('about'); }
     public function siteContact() { return $this->renderThemePage('contact'); }
