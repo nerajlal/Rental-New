@@ -45,7 +45,7 @@ class ThemeCustomization extends Model
                 'subheading' => 'Exquisite designs for your special occasions',
                 'button_text' => 'Shop Now',
                 'button_url' => '/shop',
-                'background_color' => '#008060',
+                'background_color' => '#121212',
             ],
             'featured-products' => [
                 'heading' => 'Featured Collection',

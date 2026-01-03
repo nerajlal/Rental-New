@@ -50,7 +50,7 @@
                 "background_color": {
                     "type": "color",
                     "label": "Background Color",
-                    "default": "#008060"
+                    "default": "#121212"
                 }
             }
         },
