@@ -58,21 +58,23 @@
         $menuItems = $menuItems ?? [];
     @endphp
     
-    @foreach($sectionOrder as $sectionType)
-        @php
-            $sectionData = $customization ? $customization->getSectionData($sectionType) : [];
-            $themeName = $customization->theme_name ?? 'jewelry-luxe';
-        @endphp
-        
-        <div data-section-type="{{ $sectionType }}">
-            @include("admin-shop.themes.{$themeName}.sections.{$sectionType}", [
-                'data' => $sectionData,
-                'menuItems' => $menuItems,
-                'footerItems' => $footerItems ?? [],
-                'homeUrl' => $homeUrl ?? route('shop.preview-store')
-            ])
-        </div>
-    @endforeach
+    <div id="theme-sections">
+        @foreach($sectionOrder as $sectionType)
+            @php
+                $sectionData = $customization ? $customization->getSectionData($sectionType) : [];
+                $themeName = $customization->theme_name ?? 'jewelry-luxe';
+            @endphp
+            
+            <div data-section-type="{{ $sectionType }}">
+                @include("admin-shop.themes.{$themeName}.sections.{$sectionType}", [
+                    'data' => $sectionData,
+                    'menuItems' => $menuItems,
+                    'footerItems' => $footerItems ?? [],
+                    'homeUrl' => $homeUrl ?? route('shop.preview-store')
+                ])
+            </div>
+        @endforeach
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
@@ -122,11 +124,21 @@
                             // Text updates
                             targetEl.innerText = value;
                         }
-                    } else if (key === 'show_search' || key === 'show_ratings' || key === 'show_social' || key === 'products_count') {
-                        // Fallback reload if element not found but it's a structural setting
-                         location.reload();
+                    } else if (key === 'background_color') {
+                         // Fallback if no specific target but section bg needs update
+                         sectionEl.style.backgroundColor = value;
                     }
                 }
+            } else if (event.data.type === 'update-order') {
+                const newOrder = event.data.order;
+                const container = document.getElementById('theme-sections');
+                
+                newOrder.forEach(type => {
+                    const el = document.querySelector(`[data-section-type="${type}"]`);
+                    if (el) {
+                        container.appendChild(el);
+                    }
+                });
             }
         });
     </script>

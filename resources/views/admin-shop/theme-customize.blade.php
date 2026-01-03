@@ -89,6 +89,7 @@
             @foreach($config['sections'] as $index => $section)
                 <div class="section-item" onclick="showSettings('{{ $section['type'] }}')" id="section-{{ $section['type'] }}">
                     <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-grip-vertical text-muted drag-handle me-1" style="cursor: move; opacity: 0.5;"></i>
                         <i class="fas {{ $section['icon'] }}" style="color: var(--p-primary); width: 20px;"></i>
                         <div class="flex-grow-1">
                             <div class="fw-medium">{{ $section['name'] }}</div>
@@ -188,10 +189,70 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
 <script>
 let customizationData = @json($customization->sections ?? []);
 if (Array.isArray(customizationData) && customizationData.length === 0) {
     customizationData = {};
+}
+let sectionOrder = @json($sectionOrder);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sectionsList = document.getElementById('sectionsList');
+    new Sortable(sectionsList, {
+        handle: '.drag-handle',
+        animation: 150,
+        onEnd: function (evt) {
+            const newOrder = [];
+            sectionsList.querySelectorAll('.section-item').forEach(el => {
+                 const type = el.id.replace('section-', '');
+                 newOrder.push(type);
+            });
+            sectionOrder = newOrder;
+            
+            // Notify preview
+            const iframe = document.getElementById('previewFrame');
+            iframe.contentWindow.postMessage({
+                type: 'update-order',
+                order: newOrder
+            }, '*');
+        }
+    });
+});
+    
+function saveCustomization() {
+    const button = event.target;
+    const originalText = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Saving...';
+    
+    fetch('{{ route("shop.themes.save") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({
+            sections: JSON.stringify(customizationData),
+            section_order: JSON.stringify(sectionOrder)
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            button.innerHTML = '<i class="fas fa-check me-1"></i> Saved!';
+            setTimeout(() => {
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }, 2000);
+        }
+    })
+    .catch(error => {
+        alert('Error saving customization');
+        button.disabled = false;
+        button.innerHTML = originalText;
+    });
 }
 
 function showSettings(sectionType) {

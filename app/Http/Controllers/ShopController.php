@@ -272,7 +272,37 @@ class ShopController extends Controller
         // Get store settings
         $settings = \App\Models\StoreSettings::where('user_id', auth()->id())->first();
         
-        return view('admin-shop.theme-customize', compact('customization', 'config', 'themeName', 'menuItems', 'footerItems', 'settings'));
+        // Sort config sections based on saved order
+        $savedOrder = $customization->section_order ?? ['header', 'hero', 'featured-products', 'how-it-works', 'cta', 'testimonials', 'footer'];
+        
+        // Create a map of config sections for easy lookup
+        $configSections = collect($config['sections'])->keyBy('type');
+        
+        // Rebuild sections array based on order, appending any new config sections (like footer if missing from order)
+        $orderedSections = [];
+        $processedTypes = [];
+        
+        // Add saved sections in order
+        foreach ($savedOrder as $type) {
+            if (isset($configSections[$type])) {
+                $orderedSections[] = $configSections[$type];
+                $processedTypes[] = $type;
+            }
+        }
+        
+        // Append any remaining sections from config that weren't in saved order
+        foreach ($configSections as $type => $section) {
+            if (!in_array($type, $processedTypes)) {
+                $orderedSections[] = $section;
+                $savedOrder[] = $type; // Add to order state
+            }
+        }
+        
+        $config['sections'] = $orderedSections;
+        // Pass normalized order (no duplicates/missing) to view
+        $sectionOrder = $savedOrder; 
+        
+        return view('admin-shop.theme-customize', compact('customization', 'config', 'themeName', 'menuItems', 'footerItems', 'settings', 'sectionOrder'));
     }
 
     public function saveThemeCustomization(Request $request)
@@ -284,7 +314,14 @@ class ShopController extends Controller
         }
         
         $sections = json_decode($request->sections, true);
-        $customization->update(['sections' => $sections]);
+        $sectionOrder = $request->section_order ? json_decode($request->section_order, true) : null;
+        
+        $updateData = ['sections' => $sections];
+        if ($sectionOrder) {
+            $updateData['section_order'] = $sectionOrder;
+        }
+        
+        $customization->update($updateData);
         
         return response()->json(['success' => true, 'message' => 'Customization saved successfully']);
     }
