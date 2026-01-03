@@ -40,10 +40,12 @@
     @foreach($sectionOrder as $sectionType)
         @php
             $sectionData = $customization ? $customization->getSectionData($sectionType) : [];
-            $sectionData['menuItems'] = $menuItems; // Pass menu to all sections
         @endphp
         
-        @include("admin-shop.themes.{$customization->theme_name ?? 'jewelry-luxe'}.sections.{$sectionType}", ['data' => $sectionData])
+        @include("admin-shop.themes.{$customization->theme_name ?? 'jewelry-luxe'}.sections.{$sectionType}", [
+            'data' => $sectionData,
+            'menuItems' => $menuItems
+        ])
     @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

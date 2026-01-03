@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="d-flex gap-2">
-                                <a href="#" class="p-btn-primary btn-sm">
+                                <a href="{{ route('shop.themes.customize', ['theme' => 'jewelry-luxe']) }}" class="p-btn-primary btn-sm">
                                     <i class="fas fa-paint-brush me-1"></i> Customize
                                 </a>
                                 <a href="#" class="p-btn btn-sm">

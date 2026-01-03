@@ -154,7 +154,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    @forelse($mainMenuItems as $item)
+                    @forelse($menuItems ?? [] as $item)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ $item['url'] }}">{{ $item['label'] }}</a>
                         </li>

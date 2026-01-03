@@ -178,15 +178,24 @@ class ShopController extends Controller
             return redirect()->route('shop.online-store')->with('error', 'Please configure your store settings first.');
         }
 
+        // Get theme customization
+        $customization = \App\Models\ThemeCustomization::where('user_id', auth()->id())->first();
+        
         // Get navigation menus
         $mainMenu = \DB::table('navigation_menus')
             ->where('user_id', auth()->id())
             ->where('type', 'main')
             ->first();
 
-        $mainMenuItems = $mainMenu ? json_decode($mainMenu->items, true) : [];
+        $menuItems = $mainMenu ? json_decode($mainMenu->items, true) : [];
 
-        return view('admin-shop.preview-store', compact('settings', 'mainMenuItems'));
+        // If customization exists, use theme template
+        if ($customization && $customization->published) {
+            return view("admin-shop.themes.{$customization->theme_name}.index", compact('settings', 'customization', 'menuItems'));
+        }
+
+        // Fallback to default preview
+        return view('admin-shop.preview-store', compact('settings', 'menuItems'));
     }
 
     public function themes()
