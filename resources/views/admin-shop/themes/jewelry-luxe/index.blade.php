@@ -45,7 +45,8 @@
         <div data-section-type="{{ $sectionType }}">
             @include("admin-shop.themes.{$customization->theme_name ?? 'jewelry-luxe'}.sections.{$sectionType}", [
                 'data' => $sectionData,
-                'menuItems' => $menuItems
+                'menuItems' => $menuItems,
+                'footerItems' => $footerItems ?? []
             ])
         </div>
     @endforeach

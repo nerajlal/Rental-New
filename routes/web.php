@@ -68,4 +68,12 @@ Route::prefix('shop')->name('shop.')->middleware('auth')->group(function () {
     // Inner pages
     Route::get('/products/create', [ShopController::class, 'productsCreate'])->name('products.create');
     Route::get('/orders/{id}', [ShopController::class, 'ordersView'])->name('orders.view');
+
+    // Live Site Pages (Preview)
+    Route::prefix('site')->name('site.')->group(function () {
+        Route::get('/products', [ShopController::class, 'siteProducts'])->name('products');
+        Route::get('/about', [ShopController::class, 'siteAbout'])->name('about');
+        Route::get('/contact', [ShopController::class, 'siteContact'])->name('contact');
+        Route::get('/privacy', [ShopController::class, 'sitePrivacy'])->name('privacy');
+    });
 });

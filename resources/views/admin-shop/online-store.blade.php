@@ -49,9 +49,9 @@
                                 <a href="{{ route('shop.themes.customize', ['theme' => 'jewelry-luxe']) }}" class="p-btn-primary btn-sm">
                                     <i class="fas fa-paint-brush me-1"></i> Customize
                                 </a>
-                                <a href="#" class="p-btn btn-sm">
+                                <!-- <a href="#" class="p-btn btn-sm">
                                     <i class="fas fa-code me-1"></i> Edit code
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
@@ -115,58 +115,8 @@
 
     <!-- Content Management -->
     <div class="row g-3 mb-4">
-        <!-- Blog Posts -->
-        <div class="col-md-6">
-            <div class="card border-0 shadow-sm h-100" style="border-radius: 8px;">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex align-items-center gap-2">
-                            <i class="fas fa-blog" style="font-size: 20px; color: var(--p-primary);"></i>
-                            <h6 class="fw-bold mb-0">Blog Posts</h6>
-                        </div>
-                        <a href="#" class="p-btn-primary btn-sm">Create post</a>
-                    </div>
-                    <p class="text-subdued small mb-3">3 published posts</p>
-                    
-                    <div class="d-flex flex-column gap-2">
-                        <div class="p-2 border rounded" style="cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='transparent'">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <div class="fw-medium mb-1" style="font-size: 14px;">How to Choose Bridal Jewelry</div>
-                                    <small class="text-subdued">Published Dec 28, 2025 • 245 views</small>
-                                </div>
-                                <span class="badge bg-success bg-opacity-10 text-success rounded-pill">Live</span>
-                            </div>
-                        </div>
-                        <div class="p-2 border rounded" style="cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='transparent'">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <div class="fw-medium mb-1" style="font-size: 14px;">Caring for Rented Ornaments</div>
-                                    <small class="text-subdued">Published Dec 15, 2025 • 189 views</small>
-                                </div>
-                                <span class="badge bg-success bg-opacity-10 text-success rounded-pill">Live</span>
-                            </div>
-                        </div>
-                        <div class="p-2 border rounded" style="cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='transparent'">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <div class="fw-medium mb-1" style="font-size: 14px;">Traditional vs Modern Designs</div>
-                                    <small class="text-subdued">Published Dec 10, 2025 • 312 views</small>
-                                </div>
-                                <span class="badge bg-success bg-opacity-10 text-success rounded-pill">Live</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="text-decoration-none mt-3 d-block" style="color: var(--p-primary); font-size: 14px;">
-                        View all posts →
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <!-- Pages -->
-        <div class="col-md-6">
+        <div class="col-12">
             <div class="card border-0 shadow-sm h-100" style="border-radius: 8px;">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -174,46 +124,7 @@
                             <i class="fas fa-file-alt" style="font-size: 20px; color: var(--p-primary);"></i>
                             <h6 class="fw-bold mb-0">Pages</h6>
                         </div>
-                        <a href="#" class="p-btn-primary btn-sm">Create page</a>
-                    </div>
-                    <p class="text-subdued small mb-3">5 published pages</p>
-                    
-                    <div class="d-flex flex-column gap-2">
-                        <div class="p-2 border rounded" style="cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='transparent'">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="fw-medium" style="font-size: 14px;">About Us</div>
-                                <small class="text-subdued">Updated 5 days ago</small>
-                            </div>
-                        </div>
-                        <div class="p-2 border rounded" style="cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='transparent'">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="fw-medium" style="font-size: 14px;">Rental Policy</div>
-                                <small class="text-subdued">Updated 2 weeks ago</small>
-                            </div>
-                        </div>
-                        <div class="p-2 border rounded" style="cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='transparent'">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="fw-medium" style="font-size: 14px;">Care Instructions</div>
-                                <small class="text-subdued">Updated 3 weeks ago</small>
-                            </div>
-                        </div>
-                        <div class="p-2 border rounded" style="cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='transparent'">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="fw-medium" style="font-size: 14px;">Contact & Booking</div>
-                                <small class="text-subdued">Updated 1 month ago</small>
-                            </div>
-                        </div>
-                        <div class="p-2 border rounded" style="cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='transparent'">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="fw-medium" style="font-size: 14px;">FAQs</div>
-                                <small class="text-subdued">Updated 1 month ago</small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="text-decoration-none mt-3 d-block" style="color: var(--p-primary); font-size: 14px;">
-                        View all pages →
-                    </a>
+                    <!-- Link removed -->
                 </div>
             </div>
         </div>

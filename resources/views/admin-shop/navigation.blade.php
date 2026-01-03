@@ -75,9 +75,14 @@
                     <input type="text" class="form-control" id="itemLabel" placeholder="e.g., Home, Shop, About">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label fw-medium small">URL</label>
-                    <input type="text" class="form-control" id="itemUrl" placeholder="e.g., /shop, /about">
-                    <small class="text-subdued">Enter relative URL or external link</small>
+                    <label class="form-label fw-medium small">Link To</label>
+                    <select class="form-select" id="itemUrl">
+                        <option value="{{ route('shop.preview-store') }}">Home Page</option>
+                        <option value="{{ route('shop.site.products') }}">Products / Shop</option>
+                        <option value="{{ route('shop.site.about') }}">About Us</option>
+                        <option value="{{ route('shop.site.contact') }}">Contact Us</option>
+                        <option value="{{ route('shop.site.privacy') }}">Privacy Policy</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer border-0">
@@ -249,7 +254,7 @@ function addMenuItem(type) {
     currentMenuType = type;
     editingIndex = -1;
     document.getElementById('itemLabel').value = '';
-    document.getElementById('itemUrl').value = '';
+    document.getElementById('itemUrl').value = '/'; // Default to Home
     new bootstrap.Modal(document.getElementById('menuItemModal')).show();
 }
 
@@ -265,11 +270,17 @@ function editMenuItem(type, index) {
 }
 
 function saveMenuItem() {
-    const label = document.getElementById('itemLabel').value.trim();
-    const url = document.getElementById('itemUrl').value.trim();
+    let label = document.getElementById('itemLabel').value.trim();
+    const url = document.getElementById('itemUrl').value;
     
-    if (!label || !url) {
-        alert('Please fill in both label and URL');
+    // Auto-fill label if empty based on selected URL
+    if (!label) {
+        const select = document.getElementById('itemUrl');
+        label = select.options[select.selectedIndex].text;
+    }
+    
+    if (!url) {
+        alert('Please select a page link');
         return;
     }
     

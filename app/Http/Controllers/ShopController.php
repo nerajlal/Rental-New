@@ -182,20 +182,19 @@ class ShopController extends Controller
         $customization = \App\Models\ThemeCustomization::where('user_id', auth()->id())->first();
         
         // Get navigation menus
-        $mainMenu = \DB::table('navigation_menus')
-            ->where('user_id', auth()->id())
-            ->where('type', 'main')
-            ->first();
-
+        $mainMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'main')->first();
         $menuItems = $mainMenu ? json_decode($mainMenu->items, true) : [];
+        
+        $footerMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'footer')->first();
+        $footerItems = $footerMenu ? json_decode($footerMenu->items, true) : [];
 
         // If customization exists, use theme template
         if ($customization && $customization->published) {
-            return view("admin-shop.themes.{$customization->theme_name}.index", compact('settings', 'customization', 'menuItems'));
+            return view("admin-shop.themes.{$customization->theme_name}.index", compact('settings', 'customization', 'menuItems', 'footerItems'));
         }
 
         // Fallback to default preview
-        return view('admin-shop.preview-store', compact('settings', 'menuItems'));
+        return view('admin-shop.preview-store', compact('settings', 'menuItems', 'footerItems'));
     }
 
     public function themes()
@@ -224,16 +223,16 @@ class ShopController extends Controller
         $config = json_decode(file_get_contents($configPath), true);
         
         // Get menu items
-        $mainMenu = \DB::table('navigation_menus')
-            ->where('user_id', auth()->id())
-            ->where('type', 'main')
-            ->first();
+        $mainMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'main')->first();
         $menuItems = $mainMenu ? json_decode($mainMenu->items, true) : [];
+
+        $footerMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'footer')->first();
+        $footerItems = $footerMenu ? json_decode($footerMenu->items, true) : [];
         
         // Get store settings
         $settings = \App\Models\StoreSettings::where('user_id', auth()->id())->first();
         
-        return view('admin-shop.theme-customize', compact('customization', 'config', 'themeName', 'menuItems', 'settings'));
+        return view('admin-shop.theme-customize', compact('customization', 'config', 'themeName', 'menuItems', 'footerItems', 'settings'));
     }
 
     public function saveThemeCustomization(Request $request)
@@ -262,4 +261,30 @@ class ShopController extends Controller
         
         return response()->json(['success' => true, 'message' => 'Theme published successfully']);
     }
+
+    // Site Pages
+    private function renderThemePage($view, $data = [])
+    {
+        $settings = \App\Models\StoreSettings::where('user_id', auth()->id())->first();
+        $customization = \App\Models\ThemeCustomization::where('user_id', auth()->id())->first();
+        $mainMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'main')->first();
+        $menuItems = $mainMenu ? json_decode($mainMenu->items, true) : [];
+        
+        $footerMenu = \DB::table('navigation_menus')->where('user_id', auth()->id())->where('type', 'footer')->first();
+        $footerItems = $footerMenu ? json_decode($footerMenu->items, true) : [];
+        
+        $viewPath = "admin-shop.themes.{$customization->theme_name}.pages.{$view}";
+        
+        // Fallback or create if dynamic lookup needed, for now assuming jewelry-luxe
+        if (!view()->exists($viewPath)) {
+            $viewPath = "admin-shop.themes.jewelry-luxe.pages.{$view}";
+        }
+        
+        return view($viewPath, compact('settings', 'customization', 'menuItems', 'footerItems', 'data'));
+    }
+
+    public function siteProducts() { return $this->renderThemePage('products'); }
+    public function siteAbout() { return $this->renderThemePage('about'); }
+    public function siteContact() { return $this->renderThemePage('contact'); }
+    public function sitePrivacy() { return $this->renderThemePage('privacy'); }
 }

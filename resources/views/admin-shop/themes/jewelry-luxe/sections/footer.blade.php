@@ -18,10 +18,13 @@
             <div class="col-md-4">
                 <h6 class="fw-bold mb-3">Quick Links</h6>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/about" class="text-decoration-none text-subdued">About Us</a></li>
-                    <li class="mb-2"><a href="/shop" class="text-decoration-none text-subdued">Shop</a></li>
-                    <li class="mb-2"><a href="/policies" class="text-decoration-none text-subdued">Rental Policy</a></li>
-                    <li class="mb-2"><a href="/contact" class="text-decoration-none text-subdued">Contact</a></li>
+                    @forelse($footerItems ?? [] as $item)
+                        <li class="mb-2"><a href="{{ $item['url'] }}" class="text-decoration-none text-subdued">{{ $item['label'] }}</a></li>
+                    @empty
+                        <li class="mb-2"><a href="{{ route('shop.site.about') }}" class="text-decoration-none text-subdued">About Us</a></li>
+                        <li class="mb-2"><a href="{{ route('shop.site.contact') }}" class="text-decoration-none text-subdued">Contact</a></li>
+                        <li class="mb-2"><a href="{{ route('shop.site.privacy') }}" class="text-decoration-none text-subdued">Privacy Policy</a></li>
+                    @endforelse
                 </ul>
             </div>
             <div class="col-md-4">
